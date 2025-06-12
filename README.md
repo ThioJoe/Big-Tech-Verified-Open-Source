@@ -28,21 +28,21 @@ This document lists open-source GitHub organizations and accounts that have been
 |---|---|---|
 | **[Google](https://github.com/google)** | `google.com` | |
 | **[GoogleChromeLabs](https://github.com/GoogleChromeLabs)** | | `developer.chrome.com`<br>↳ [Blog post](https://developer.chrome.com/blog/chrome-for-testing)<br>↳ "JSON API Endpoints" Links To 🠊 `github.com/GoogleChromeLabs` |
-| **[GoogleChrome](https://github.com/GoogleChrome)** | | `opensource.google.com`<br>↳ [`projects/audion`](https://opensource.google.com/projects/audion) Redirects 🠊 `github.com/GoogleChrome` |
-| **[tensorflow](https://github.com/tensorflow)** | | `opensource.google`<br>↳ [`opensource.google/projects/tensorflow`](https://opensource.google/projects/tensorflow) Links To 🠊 `tensorflow.org`<br>↳ `tensorflow.org` "GitHub" link Links To 🠊 `github.com/tensorflow` |
-| **[Flutter](https://github.com/flutter)** | `flutter.dev` | `opensource.google`<br>↳ [`opensource.google/projects/flutter`](https://opensource.google/projects/flutter) Links To 🠊 `flutter.dev` |
-| **[Android](https://github.com/android)** | | [`opensource.google/projects/android`](https://opensource.google/projects/android) Links To 🠊 `source.android.com`<br>↳ [`developer.android.com/games/samples`](https://developer.android.com/games/samples) Links To 🠊 `github.com/android` |
+| **[GoogleChrome](https://github.com/GoogleChrome)** | | `opensource.google.com`<br>↳ [`opensource.google.com/projects/audion`](https://opensource.google.com/projects/audion)<br>↳ Redirects To 🠊 `github.com/GoogleChrome` |
+| **[tensorflow](https://github.com/tensorflow)** | | `opensource.google`<br>↳ [`opensource.google/projects/tensorflow`](https://opensource.google/projects/tensorflow)<br>↳ Links To 🠊 `tensorflow.org`<br>↳ "GitHub" link Links To 🠊 `github.com/tensorflow` |
+| **[Flutter](https://github.com/flutter)** | `flutter.dev` | `opensource.google`<br>↳ [`opensource.google/projects/flutter`](https://opensource.google/projects/flutter)<br>↳ Links To 🠊 `flutter.dev` |
+| **[Android](https://github.com/android)** | | `opensource.google.com`<br>↳ [`opensource.google/projects/android`](https://opensource.google/projects/android)<br>↳ Links To 🠊 `source.android.com`<br>↳ [`developer.android.com/games/samples`](https://developer.android.com/games/samples)<br>↳ Links To 🠊 `github.com/android` |
 | **[Google Cloud Platform](https://github.com/GoogleCloudPlatform)** | | `cloud.google.com`<br>↳ [`Documentation article`](https://cloud.google.com/build/docs/automating-builds/github/connect-repo-github)<br>↳ Footer "GitHub" link Links To 🠊 `github.com/GoogleCloudPlatform` |
 | **[Material Components](https://github.com/material-components)** | | `material.google.com`<br>↳ Footer "GitHub" link Links To 🠊 `github.com/material-components` |
-| **[Dart](https://github.com/dart-lang)** | `dart.dev` | `opensource.google`<br>↳ [`projects/dart`](https://opensource.google/projects/dart) Links To 🠊 `dart.dev` |
-| **[Google APIs](https://github.com/googleapis)** | | `developer.google.com`<br>↳ Shortlinks Redirect 🠊 `github.com/googleapis` |
+| **[Dart](https://github.com/dart-lang)** | `dart.dev` | `opensource.google`<br>↳ [`opensource.google/projects/dart`](https://opensource.google/projects/dart)<br>↳ Links To 🠊 `dart.dev` |
+| **[Google APIs](https://github.com/googleapis)** | | `developer.google.com`<br>↳ [`developers.google.com/api-client-library/python`](https://developers.google.com/api-client-library/python)<br>↳ Redirects To 🠊 `github.com/googleapis` |
 | **[Firebase](https://github.com/firebase)** | | `firebase.google.com`<br>↳ Footer "GitHub" link Links To 🠊 `github.com/firebase` |
-| **[Kubernetes](https://github.com/kubernetes)** | `kubernetes.io` | `opensource.google`<br>↳ [`opensource.google/projects/kubernetes`](https://opensource.google/projects/kubernetes) Links To 🠊 `kubernetes.io` |
-| **[Kubernetes SIGs](https://github.com/kubernetes-sigs)** | | `opensource.google`<br>↳ [`opensource.google/projects/kubernetes`](https://opensource.google/projects/kubernetes) Links To 🠊 `kubernetes.io`<br>↳ `sigs.kubernetes.io` Redirects 🠊 `github.com/kubernetes-sigs` |
-| **[Go](https://github.com/golang)** | | `opensource.google`<br>↳ [`opensource.google/projects/go`](https://opensource.google/projects/go) Links To 🠊 `go.dev`<br>↳ `go.dev` "GitHub" link Links To 🠊 `github.com/golang` |
-| **[Google DeepMind](https://github.com/google-deepmind)** | | `deepmind.google`<br>↳ "Follow Us" link Links To 🠊 `github.com/google-deepmind` |
+| **[Kubernetes](https://github.com/kubernetes)** | `kubernetes.io` | `opensource.google`<br>↳ [`opensource.google/projects/kubernetes`](https://opensource.google/projects/kubernetes)<br>↳ Links To 🠊 `kubernetes.io` |
+| **[Kubernetes SIGs](https://github.com/kubernetes-sigs)** | | `opensource.google`<br>↳ [`opensource.google/projects/kubernetes`](https://opensource.google/projects/kubernetes)<br>↳ Links To 🠊 `kubernetes.io`<br>↳ `sigs.kubernetes.io` Redirects 🠊 `github.com/kubernetes-sigs` |
+| **[Go](https://github.com/golang)** | | `opensource.google`<br>↳ [`opensource.google/projects/go`](https://opensource.google/projects/go)<br>↳ Links To 🠊 `go.dev`<br>↳ "GitHub" link Links To 🠊 `github.com/golang` |
+| **[Google DeepMind](https://github.com/google-deepmind)** | | `deepmind.google`<br>↳ "Follow Us" section Links To 🠊 `github.com/google-deepmind` |
 | **[Kaggle](https://github.com/kaggle)** | | `kaggle.com` ([Google-owned](https://cloud.google.com/blog/products/gcp/welcome-kaggle-to-google-cloud/))<br>↳ [`API docs`](https://www.kaggle.com/docs/models) Links To 🠊 `github.com/kaggle` |
-| **[Google Cloud Build](https://github.com/GoogleCloudBuild)** | | `cloud.google.com`<br>↳[`Documentation Article`](https://cloud.google.com/build/docs/automating-builds/github/connect-repo-github?generation=2nd-gen)<br>↳ 'Install cloud build github app' Links To 🠊 [GitHub App](https://github.com/apps/google-cloud-build)<br>↳ App's "Developer" link Links To 🠊 `github.com/GoogleCloudBuild` |
+| **[Google Cloud Build](https://github.com/GoogleCloudBuild)** | | `cloud.google.com`<br>↳[`Documentation Article`](https://cloud.google.com/build/docs/automating-builds/github/connect-repo-github?generation=2nd-gen)<br>↳ 'Install cloud build github app'<br>↳ Links To 🠊 [GitHub App](https://github.com/apps/google-cloud-build)<br>↳ App's "Developer" field Links To 🠊 `github.com/GoogleCloudBuild` |
 | **[Google Cloud and HashiCorp](https://github.com/terraform-google-modules)** | `opensource.google.com` | |
 | **[Google GitHub Actions](https://github.com/google-github-actions)** | `opensource.google.com` | |
 | **[Google Pay](https://github.com/google-pay)** | `developers.google.com` | |
@@ -81,7 +81,7 @@ This document lists open-source GitHub organizations and accounts that have been
 | Organization/Account | Verified Domain | Proof of Association |
 |---|---|---|
 | **[Apple](https://github.com/apple)** | `apple.com` | |
-| **[The Swift Programming Language](https://github.com/swiftlang)** | `swift.org` | `opensource.apple.com`<br>↳ [`opensource.apple.com/projects/swift`](https://opensource.apple.com/projects/swift/) Links To 🠊 `swift.org` |
-| **[The WebKit Open Source Project](https://github.com/webkit)** | `webkit.org` | `opensource.apple.com`<br>↳ [`opensource.apple.com/projects/webkit`](https://opensource.apple.com/projects/webkit/) Links To 🠊 `webkit.org` |
-| **[ml-explore](https://github.com/ml-explore)** | | `opensource.apple.com`<br>↳ [`opensource.apple.com/projects/mlx`](https://opensource.apple.com/projects/mlx/) Links To 🠊 `github.com/ml-explore` |
+| **[The Swift Programming Language](https://github.com/swiftlang)** | `swift.org` | `opensource.apple.com`<br>↳ [`opensource.apple.com/projects/swift`](https://opensource.apple.com/projects/swift/)<br>↳ Links To 🠊 `swift.org` |
+| **[The WebKit Open Source Project](https://github.com/webkit)** | `webkit.org` | `opensource.apple.com`<br>↳ [`opensource.apple.com/projects/webkit`](https://opensource.apple.com/projects/webkit/)<br>↳ Links To 🠊 `webkit.org` |
+| **[ml-explore](https://github.com/ml-explore)** | | `opensource.apple.com`<br>↳ [`opensource.apple.com/projects/mlx`](https://opensource.apple.com/projects/mlx/)<br>↳ Links To 🠊 `github.com/ml-explore` |
 | **[Apple OSS Distributions](https://github.com/apple-oss-distributions)** | | Apple's official [Open Source Releases page](https://opensource.apple.com/releases/)<br>↳ Numerous "GitHub" links Link To 🠊 `github.com/apple-oss-distributions` |
