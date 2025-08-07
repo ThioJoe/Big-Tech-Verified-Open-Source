@@ -46,6 +46,14 @@ This document lists open-source GitHub organizations and accounts that have been
 | **[Google Cloud and HashiCorp](https://github.com/terraform-google-modules)** | `opensource.google.com` | |
 | **[Google GitHub Actions](https://github.com/google-github-actions)** | `opensource.google.com` | |
 | **[Google Pay](https://github.com/google-pay)** | `developers.google.com` | |
+| **[GoogleContainerTools](https://github.com/GoogleContainerTools)** | | `cloud.google.com`<br>↳ [Blog post](https://cloud.google.com/blog/products/application-development/introducing-jib-build-java-docker-images-better)<br>↳ Links To 🠊 `github.com/GoogleContainerTools` |
+| **[Google Creative Lab](https://github.com/googlecreativelab)** | | `opensource.google.com`<br>↳ [`opensource.google.com/projects/quickdrawdataset`](https://opensource.google.com/projects/quickdrawdataset)<br>↳ Redirects To 🠊 `github.com/googlecreativelab` |
+| **[Google CodeLabs](https://github.com/googlecodelabs)** | | `codelabs.developers.google.com`<br>↳ "Codelab tools on GitHub" link Links To 🠊 `github.com/googlecodelabs` |
+| **[Noto Fonts](https://github.com/notofonts)** | `google.com` | |
+| **[Google Fonts](https://github.com/googlefonts)** | | `fonts.google.com`<br>↳ [`fonts.google.com/noto/contribute`](https://fonts.google.com/noto/contribute)<br>↳ "GitHub" link Links To 🠊 `github.com/googlefonts` <sup>[[A]](https://archive.ph/KB5yk#selection-685.0-685.10:~:text=issue%20in%20the-,noto%2Demoji,-repository.)</sup> |
+| **[google-gemini](https://github.com/google-gemini)** | | `ai.google.dev`<br>↳ [`ai.google.dev/gemini-api/docs`](https://ai.google.dev/gemini-api/docs)<br>↳ "Cookbook" link at the top Links To 🠊 `github.com/google-gemini` <sup>[[A]](https://web.archive.org/web/20250807082019/https://ai.google.dev/gemini-api/docs#:~:text=API%20Reference-,Cookbook,-Community)</sup> |
+| **[Google Security Operations](https://github.com/chronicle)** | | `cloud.google.com`<br>↳ [`cloud.google.com/chronicle/docs/reference/ingestion-api`](https://cloud.google.com/chronicle/docs/reference/ingestion-api#:~:text=https%3A//github.com/chronicle/api%2Dsamples%2Dpython/blob/master/ingestion/create_entities.py)<br>↳ Example code contains link to 🠊 `github.com/chronicle/api-samples-python` <sup>[[A]](https://web.archive.org/web/20250523122327/https://cloud.google.com/chronicle/docs/reference/ingestion-api#:~:text=https%3A//github.com/chronicle/api%2Dsamples%2Dpython/blob/master/ingestion/create_entities.py)</sup> |
+| **[Google Colaboratory](https://github.com/googlecolab)** | | `colab.research.google.com` <br>↳ 'Getting Started' link Links To 🠊 `github.com/googlecolab` <sup>[[A]](https://archive.ph/fEoc7#selection-2443.0-2443.36:~:text=getting%20started%20with%20google%20colab%20ai)</sup> |
 
 ---
 
