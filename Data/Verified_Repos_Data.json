@@ -701,7 +701,7 @@
             },
             {
               "type": "StandaloneHyperlink",
-              "text": "cloud.google.com/chronicle/docs/reference/ingestion-api",
+              "text": "Google Cloud Documentation",
               "url": "https://cloud.google.com/chronicle/docs/reference/ingestion-api#:~:text=https%3A//github.com/chronicle/api%2Dsamples%2Dpython/blob/master/ingestion/create_entities.py",
               "archive_url": "https://web.archive.org/web/20251205182722/https://docs.cloud.google.com/chronicle/docs/reference/ingestion-api"
             },
