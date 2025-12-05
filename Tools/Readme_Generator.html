@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verified Domain Json to README Generator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        textarea::-webkit-scrollbar { width: 8px; }
+        textarea::-webkit-scrollbar-track { background: #f1f1f1; }
+        textarea::-webkit-scrollbar-thumb { background: #888; border-radius: 4px; }
+        textarea::-webkit-scrollbar-thumb:hover { background: #555; }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen p-4 md:p-8">
+
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 h-[90vh]">
+        
+        <!-- Left Column: Input -->
+        <div class="flex flex-col bg-white rounded-xl shadow-xl overflow-hidden border border-gray-200">
+            <div class="bg-blue-600 text-white p-4 flex justify-between items-center">
+                <div class="flex items-center gap-2">
+                    <h2 class="font-bold text-lg">1. JSON Input</h2>
+                </div>
+                <button onclick="loadSample()" class="text-xs bg-blue-800 hover:bg-blue-900 px-3 py-1.5 rounded transition font-medium shadow-sm">
+                    Load Sample
+                </button>
+            </div>
+            
+            <!-- Error Banner -->
+            <div id="errorBanner" class="hidden bg-red-100 border-l-4 border-red-500 text-red-700 p-4 text-sm" role="alert">
+                <p class="font-bold">JSON Error</p>
+                <p id="errorMessage">Something went wrong.</p>
+            </div>
+
+            <div class="p-4 flex-grow flex flex-col gap-4">
+                <div class="text-xs text-gray-500">
+                    <p><strong>Note on Backticks:</strong> You can include backticks inside the JSON strings directly (e.g., <code class="bg-gray-200 px-1 rounded">"`text`"</code>). Do <strong>not</strong> escape them with a backslash.</p>
+                </div>
+                <textarea id="jsonInput" class="w-full flex-grow font-mono text-xs p-4 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none resize-none bg-gray-50 text-gray-700" placeholder='{ "companies": [ ... ] }'></textarea>
+                <button onclick="generateReadme()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg transition shadow-md flex justify-center items-center gap-2">
+                    Generate Markdown
+                </button>
+            </div>
+        </div>
+
+        <!-- Right Column: Output -->
+        <div class="flex flex-col bg-white rounded-xl shadow-xl overflow-hidden border border-gray-200">
+            <div class="bg-gray-800 text-white p-4 flex justify-between items-center">
+                <h2 class="font-bold text-lg">2. Markdown Output</h2>
+                <button onclick="copyToClipboard()" id="copyBtn" class="text-xs bg-green-600 hover:bg-green-700 text-white px-3 py-1.5 rounded transition flex items-center gap-1 shadow-sm font-medium">
+                    Copy
+                </button>
+            </div>
+            <div class="flex-grow relative bg-gray-50">
+                <textarea id="markdownOutput" class="w-full h-full font-mono text-xs p-4 bg-gray-50 text-gray-800 border-none resize-none focus:outline-none" readonly spellcheck="false"></textarea>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const sampleData = {
+            "companies": [
+                {
+                    "name": "Kubernetes SIGs",
+                    "accounts": [
+                        {
+                            "name": "Kubernetes SIGs",
+                            "github_url": "https://github.com/kubernetes-sigs",
+                            "verified_domain": null,
+                            "proof_steps": [
+                                { "type": "Base", "text": "opensource.google" },
+                                { 
+                                    "type": "RedirectsTo", 
+                                    "prefix_text": "`sigs.kubernetes.io`", 
+                                    "text": "github.com/kubernetes-sigs" 
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        };
+
+        function loadSample() {
+            document.getElementById('jsonInput').value = JSON.stringify(sampleData, null, 2);
+            document.getElementById('errorBanner').classList.add('hidden');
+        }
+
+        // --- Core Logic ---
+        
+        function formatLabel(text) {
+            if (!text) return "";
+            if (text.startsWith('`') && text.endsWith('`')) return text;
+            if (!text.includes(' ') && text.includes('.')) return `\`${text}\``;
+            return text;
+        }
+
+        function generateReadme() {
+            const outputArea = document.getElementById('markdownOutput');
+            const errorBanner = document.getElementById('errorBanner');
+            const errorMessage = document.getElementById('errorMessage');
+            
+            outputArea.value = "";
+            errorBanner.classList.add('hidden');
+
+            const input = document.getElementById('jsonInput').value;
+            let data;
+            
+            try {
+                data = JSON.parse(input);
+            } catch (e) {
+                errorMessage.textContent = "Invalid JSON syntax. Ensure you aren't escaping backticks with backslashes (\\`). " + e.message;
+                errorBanner.classList.remove('hidden');
+                return;
+            }
+
+            let md = "# Verified Open Source GitHub Accounts\n\n";
+            md += "This document lists open-source GitHub organizations and accounts that have been verified as being affiliated with major tech companies.\n\n";
+            md += "---\n\n";
+
+            if (!data.companies || !Array.isArray(data.companies)) {
+                errorMessage.textContent = "JSON structure incorrect. Must contain a root 'companies' array.";
+                errorBanner.classList.remove('hidden');
+                return;
+            }
+
+            try {
+                data.companies.forEach(company => {
+                    md += `## ${company.name}\n\n`;
+                    md += "| Organization/Account | Verified Domain | Proof of Association |\n";
+                    md += "|---|---|---|\n";
+
+                    if (company.accounts) {
+                        company.accounts.forEach(account => {
+                            // 1. Column: Organization
+                            const col1 = `**[${account.name}](${account.github_url})**`;
+
+                            // 2. Column: Verified Domain
+                            const col2 = account.verified_domain ? `\`${account.verified_domain}\`` : "";
+
+                            // 3. Column: Proof
+                            let col3 = "";
+                            
+                            if (account.proof_steps && Array.isArray(account.proof_steps)) {
+                                col3 = account.proof_steps.map((step, index) => {
+                                    let line = "";
+                                    
+                                    if (index > 0) line += "<br>↳ ";
+
+                                    const archivePart = step.archive_url ? `<sup> [[A]](${step.archive_url})</sup>` : "";
+
+                                    if (step.type === "Base") {
+                                        const label = formatLabel(step.text);
+                                        line += step.url ? `[${label}](${step.url})` : label;
+                                        line += archivePart;
+                                    } 
+                                    else if (step.type === "StandaloneHyperlink") {
+                                        const label = formatLabel(step.text);
+                                        line += `[${label}](${step.url})`;
+                                        line += archivePart;
+                                    }
+                                    else if (step.type === "LinksTo" || step.type === "RedirectsTo") {
+                                        const arrow = "🠊"; 
+                                        const actionText = step.type === "LinksTo" ? "Links To" : "Redirects To";
+                                        
+                                        if (step.prefix_text) line += `${step.prefix_text} `;
+                                        line += `${actionText} ${arrow} `;
+                                        
+                                        const label = formatLabel(step.text);
+                                        line += step.url ? `[${label}](${step.url})` : label;
+                                        line += archivePart;
+                                    }
+                                    return line;
+                                }).join("");
+                            }
+
+                            // --- CHANGED LOGIC HERE ---
+                            // Build array of raw values. If value exists, pad with spaces. If empty, use single space.
+                            // This prevents "|  |" and ensures "| |"
+                            const cells = [col1, col2, col3].map(c => c ? ` ${c} ` : " ");
+                            md += `|${cells.join("|")}|\n`;
+                        });
+                    }
+
+                    md += "\n---\n\n";
+                });
+
+                md = md.trim();
+                if (md.endsWith("---")) {
+                    md = md.substring(0, md.length - 3).trim();
+                }
+
+                outputArea.value = md;
+
+            } catch (err) {
+                errorMessage.textContent = "Error processing data: " + err.message;
+                errorBanner.classList.remove('hidden');
+            }
+        }
+
+        function copyToClipboard() {
+            const copyText = document.getElementById("markdownOutput");
+            copyText.select();
+            copyText.setSelectionRange(0, 99999); 
+            document.execCommand("copy");
+            
+            const btn = document.getElementById("copyBtn");
+            const originalContent = btn.innerHTML;
+            btn.innerHTML = "Copied!";
+            btn.classList.remove("bg-green-600", "hover:bg-green-700");
+            btn.classList.add("bg-gray-700", "hover:bg-gray-800");
+            
+            setTimeout(() => {
+                btn.innerHTML = originalContent;
+                btn.classList.remove("bg-gray-700", "hover:bg-gray-800");
+                btn.classList.add("bg-green-600", "hover:bg-green-700");
+            }, 2000);
+        }
+    </script>
+</body>
+</html>

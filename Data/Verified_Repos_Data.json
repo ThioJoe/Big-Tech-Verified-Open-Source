@@ -1,0 +1,1044 @@
+{
+  "companies": [
+    {
+      "name": "Adobe",
+      "accounts": [
+        {
+          "name": "Adobe, Inc.",
+          "github_url": "https://github.com/adobe",
+          "verified_domain": "adobe.com",
+          "proof_steps": []
+        },
+        {
+          "name": "Adobe Web Platform",
+          "github_url": "https://github.com/adobe-webplatform",
+          "verified_domain": null,
+          "proof_steps": [
+            {
+              "type": "StandaloneHyperlink",
+              "text": "Listed on official Open Source portal",
+              "url": "https://opensource.adobe.com/#organizations",
+              "archive_url": null
+            }
+          ]
+        },
+        {
+          "name": "Adobe Research",
+          "github_url": "https://github.com/adobe-research",
+          "verified_domain": null,
+          "proof_steps": [
+            {
+              "type": "StandaloneHyperlink",
+              "text": "Listed on official Open Source portal",
+              "url": "https://opensource.adobe.com/#organizations",
+              "archive_url": null
+            }
+          ]
+        },
+        {
+          "name": "Adobe Photoshop",
+          "github_url": "https://github.com/adobe-photoshop",
+          "verified_domain": null,
+          "proof_steps": [
+            {
+              "type": "StandaloneHyperlink",
+              "text": "Listed on official Open Source portal",
+              "url": "https://opensource.adobe.com/#organizations",
+              "archive_url": null
+            }
+          ]
+        },
+        {
+          "name": "Adobe Fonts",
+          "github_url": "https://github.com/adobe-fonts",
+          "verified_domain": null,
+          "proof_steps": [
+            {
+              "type": "StandaloneHyperlink",
+              "text": "Listed on official Open Source portal",
+              "url": "https://opensource.adobe.com/#organizations",
+              "archive_url": null
+            }
+          ]
+        },
+        {
+          "name": "Adobe Typekit",
+          "github_url": "https://github.com/typekit",
+          "verified_domain": null,
+          "proof_steps": [
+            {
+              "type": "StandaloneHyperlink",
+              "text": "Listed on official Open Source portal",
+              "url": "https://opensource.adobe.com/#organizations",
+              "archive_url": null
+            }
+          ]
+        },
+        {
+          "name": "Adobe Community Software",
+          "github_url": "https://github.com/adobe-consulting-services",
+          "verified_domain": null,
+          "proof_steps": [
+            {
+              "type": "StandaloneHyperlink",
+              "text": "Listed on official Open Source portal (as \"Adobe Consulting Services\")",
+              "url": "https://opensource.adobe.com/#organizations",
+              "archive_url": null
+            }
+          ]
+        },
+        {
+          "name": "Adobe Experience Cloud",
+          "github_url": "https://github.com/adobe-marketing-cloud",
+          "verified_domain": null,
+          "proof_steps": [
+            {
+              "type": "StandaloneHyperlink",
+              "text": "Listed on official Open Source portal",
+              "url": "https://opensource.adobe.com/#organizations",
+              "archive_url": null
+            }
+          ]
+        },
+        {
+          "name": "Adobe-CloudOps",
+          "github_url": "https://github.com/adobe-cloudops",
+          "verified_domain": null,
+          "proof_steps": [
+            {
+              "type": "StandaloneHyperlink",
+              "text": "Listed on official Open Source portal",
+              "url": "https://opensource.adobe.com/#organizations",
+              "archive_url": null
+            }
+          ]
+        },
+        {
+          "name": "Topcoat",
+          "github_url": "https://github.com/topcoat",
+          "verified_domain": null,
+          "proof_steps": [
+            {
+              "type": "StandaloneHyperlink",
+              "text": "Listed on official Open Source portal",
+              "url": "https://opensource.adobe.com/#organizations",
+              "archive_url": null
+            }
+          ]
+        },
+        {
+          "name": "Adobe Systems",
+          "github_url": "https://github.com/adobe-flash",
+          "verified_domain": null,
+          "proof_steps": [
+            {
+              "type": "StandaloneHyperlink",
+              "text": "Listed on official Open Source portal",
+              "url": "https://opensource.adobe.com/#organizations",
+              "archive_url": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Google",
+      "accounts": [
+        {
+          "name": "Google",
+          "github_url": "https://github.com/google",
+          "verified_domain": "google.com",
+          "proof_steps": []
+        },
+        {
+          "name": "GoogleChromeLabs",
+          "github_url": "https://github.com/GoogleChromeLabs",
+          "verified_domain": null,
+          "proof_steps": [
+            {
+              "type": "Base",
+              "text": "developer.chrome.com",
+              "url": null
+            },
+            {
+              "type": "StandaloneHyperlink",
+              "text": "Blog post",
+              "url": "https://developer.chrome.com/blog/chrome-for-testing",
+              "archive_url": "https://web.archive.org/web/20250707164200/https://developer.chrome.com/blog/chrome-for-testing"
+            },
+            {
+              "type": "LinksTo",
+              "prefix_text": "\"JSON API Endpoints\"",
+              "text": "github.com/GoogleChromeLabs",
+              "url": null
+            }
+          ]
+        },
+        {
+          "name": "GoogleChrome",
+          "github_url": "https://github.com/GoogleChrome",
+          "verified_domain": null,
+          "proof_steps": [
+            {
+              "type": "Base",
+              "text": "opensource.google.com",
+              "url": null
+            },
+            {
+              "type": "StandaloneHyperlink",
+              "text": "opensource.google.com/projects/audion",
+              "url": "https://opensource.google.com/projects/audion",
+              "archive_url": null
+            },
+            {
+              "type": "RedirectsTo",
+              "prefix_text": null,
+              "text": "github.com/GoogleChrome",
+              "url": null
+            }
+          ]
+        },
+        {
+          "name": "tensorflow",
+          "github_url": "https://github.com/tensorflow",
+          "verified_domain": null,
+          "proof_steps": [
+            {
+              "type": "Base",
+              "text": "opensource.google",
+              "url": null
+            },
+            {
+              "type": "StandaloneHyperlink",
+              "text": "opensource.google/projects/tensorflow",
+              "url": "https://opensource.google/projects/tensorflow",
+              "archive_url": null
+            },
+            {
+              "type": "LinksTo",
+              "prefix_text": null,
+              "text": "tensorflow.org",
+              "url": null
+            },
+            {
+              "type": "LinksTo",
+              "prefix_text": "\"GitHub\" link",
+              "text": "github.com/tensorflow",
+              "url": null
+            }
+          ]
+        },
+        {
+          "name": "Flutter",
+          "github_url": "https://github.com/flutter",
+          "verified_domain": "flutter.dev",
+          "proof_steps": [
+            {
+              "type": "Base",
+              "text": "opensource.google",
+              "url": null
+            },
+            {
+              "type": "StandaloneHyperlink",
+              "text": "opensource.google/projects/flutter",
+              "url": "https://opensource.google/projects/flutter",
+              "archive_url": null
+            },
+            {
+              "type": "LinksTo",
+              "prefix_text": null,
+              "text": "flutter.dev",
+              "url": null
+            }
+          ]
+        },
+        {
+          "name": "Android",
+          "github_url": "https://github.com/android",
+          "verified_domain": null,
+          "proof_steps": [
+            {
+              "type": "Base",
+              "text": "opensource.google.com",
+              "url": null
+            },
+            {
+              "type": "StandaloneHyperlink",
+              "text": "opensource.google/projects/android",
+              "url": "https://opensource.google/projects/android",
+              "archive_url": null
+            },
+            {
+              "type": "LinksTo",
+              "prefix_text": null,
+              "text": "source.android.com",
+              "url": null
+            },
+            {
+              "type": "StandaloneHyperlink",
+              "text": "developer.android.com/games/samples",
+              "url": "https://developer.android.com/games/samples",
+              "archive_url": "https://web.archive.org/web/20250923163041/https://developer.android.com/games/samples"
+            },
+            {
+              "type": "LinksTo",
+              "prefix_text": null,
+              "text": "github.com/android",
+              "url": null
+            }
+          ]
+        },
+        {
+          "name": "Google Cloud Platform",
+          "github_url": "https://github.com/GoogleCloudPlatform",
+          "verified_domain": null,
+          "proof_steps": [
+            {
+              "type": "Base",
+              "text": "cloud.google.com",
+              "url": null
+            },
+            {
+              "type": "StandaloneHyperlink",
+              "text": "Documentation article",
+              "url": "https://cloud.google.com/build/docs/automating-builds/github/connect-repo-github",
+              "archive_url": "https://web.archive.org/web/20250820201754/https://cloud.google.com/build/docs/automating-builds/github/connect-repo-github?generation=2nd-gen"
+            },
+            {
+              "type": "LinksTo",
+              "prefix_text": "Footer \"GitHub\" link",
+              "text": "github.com/GoogleCloudPlatform",
+              "url": null
+            }
+          ]
+        },
+        {
+          "name": "Material Components",
+          "github_url": "https://github.com/material-components",
+          "verified_domain": null,
+          "proof_steps": [
+            {
+              "type": "Base",
+              "text": "material.google.com",
+              "url": null
+            },
+            {
+              "type": "LinksTo",
+              "prefix_text": "Footer \"GitHub\" link",
+              "text": "github.com/material-components",
+              "url": null
+            }
+          ]
+        },
+        {
+          "name": "Dart",
+          "github_url": "https://github.com/dart-lang",
+          "verified_domain": "dart.dev",
+          "proof_steps": [
+            {
+              "type": "Base",
+              "text": "opensource.google",
+              "url": null
+            },
+            {
+              "type": "StandaloneHyperlink",
+              "text": "opensource.google/projects/dart",
+              "url": "https://opensource.google/projects/dart",
+              "archive_url": null
+            },
+            {
+              "type": "LinksTo",
+              "prefix_text": null,
+              "text": "dart.dev",
+              "url": null
+            }
+          ]
+        },
+        {
+          "name": "Google APIs",
+          "github_url": "https://github.com/googleapis",
+          "verified_domain": null,
+          "proof_steps": [
+            {
+              "type": "Base",
+              "text": "developer.google.com",
+              "url": null
+            },
+            {
+              "type": "StandaloneHyperlink",
+              "text": "developers.google.com/api-client-library/python",
+              "url": "https://developers.google.com/api-client-library/python",
+              "archive_url": null
+            },
+            {
+              "type": "RedirectsTo",
+              "prefix_text": null,
+              "text": "github.com/googleapis",
+              "url": null
+            }
+          ]
+        },
+        {
+          "name": "Firebase",
+          "github_url": "https://github.com/firebase",
+          "verified_domain": null,
+          "proof_steps": [
+            {
+              "type": "Base",
+              "text": "firebase.google.com",
+              "url": null
+            },
+            {
+              "type": "LinksTo",
+              "prefix_text": "Footer \"GitHub\" link",
+              "text": "github.com/firebase",
+              "url": null
+            }
+          ]
+        },
+        {
+          "name": "Kubernetes",
+          "github_url": "https://github.com/kubernetes",
+          "verified_domain": "kubernetes.io",
+          "proof_steps": [
+            {
+              "type": "Base",
+              "text": "opensource.google",
+              "url": null
+            },
+            {
+              "type": "StandaloneHyperlink",
+              "text": "opensource.google/projects/kubernetes",
+              "url": "https://opensource.google/projects/kubernetes",
+              "archive_url": null
+            },
+            {
+              "type": "LinksTo",
+              "prefix_text": null,
+              "text": "kubernetes.io",
+              "url": null
+            }
+          ]
+        },
+        {
+          "name": "Kubernetes SIGs",
+          "github_url": "https://github.com/kubernetes-sigs",
+          "verified_domain": null,
+          "proof_steps": [
+            {
+              "type": "Base",
+              "text": "opensource.google",
+              "url": null
+            },
+            {
+              "type": "StandaloneHyperlink",
+              "text": "opensource.google/projects/kubernetes",
+              "url": "https://opensource.google/projects/kubernetes",
+              "archive_url": null
+            },
+            {
+              "type": "LinksTo",
+              "prefix_text": null,
+              "text": "kubernetes.io",
+              "url": null
+            },
+            {
+              "type": "RedirectsTo",
+              "prefix_text": "`sigs.kubernetes.io`",
+              "text": "github.com/kubernetes-sigs",
+              "url": null
+            }
+          ]
+        },
+        {
+          "name": "Go",
+          "github_url": "https://github.com/golang",
+          "verified_domain": null,
+          "proof_steps": [
+            {
+              "type": "Base",
+              "text": "opensource.google",
+              "url": null
+            },
+            {
+              "type": "StandaloneHyperlink",
+              "text": "opensource.google/projects/go",
+              "url": "https://opensource.google/projects/go",
+              "archive_url": null
+            },
+            {
+              "type": "LinksTo",
+              "prefix_text": null,
+              "text": "go.dev",
+              "url": null
+            },
+            {
+              "type": "LinksTo",
+              "prefix_text": "\"GitHub\" link",
+              "text": "github.com/golang",
+              "url": null
+            }
+          ]
+        },
+        {
+          "name": "Google DeepMind",
+          "github_url": "https://github.com/google-deepmind",
+          "verified_domain": null,
+          "proof_steps": [
+            {
+              "type": "Base",
+              "text": "deepmind.google",
+              "url": null
+            },
+            {
+              "type": "LinksTo",
+              "prefix_text": "\"Follow Us\" section",
+              "text": "github.com/google-deepmind",
+              "url": null
+            }
+          ]
+        },
+        {
+          "name": "Kaggle",
+          "github_url": "https://github.com/kaggle",
+          "verified_domain": null,
+          "proof_steps": [
+            {
+              "type": "Base",
+              "text": "kaggle.com (Google-owned)",
+              "url": "https://cloud.google.com/blog/products/gcp/welcome-kaggle-to-google-cloud/"
+            },
+			{
+              "type": "StandaloneHyperlink",
+              "text": "API docs",
+              "url": "https://www.kaggle.com/docs/models",
+              "archive_url": "https://archive.ph/h3gMC"
+            },
+            {
+              "type": "LinksTo",
+              "text": "github.com/kaggle"
+            }
+          ]
+        },
+        {
+          "name": "Google Cloud Build",
+          "github_url": "https://github.com/GoogleCloudBuild",
+          "verified_domain": null,
+          "proof_steps": [
+            {
+              "type": "Base",
+              "text": "cloud.google.com",
+              "url": null
+            },
+            {
+              "type": "StandaloneHyperlink",
+              "text": "Documentation Article",
+              "url": "https://cloud.google.com/build/docs/automating-builds/github/connect-repo-github?generation=2nd-gen",
+              "archive_url": "https://web.archive.org/web/20250820201754/https://cloud.google.com/build/docs/automating-builds/github/connect-repo-github?generation=2nd-gen"
+            },
+            {
+              "type": "LinksTo",
+              "prefix_text": "Step 'Install the Cloud Build GitHub App'",
+              "text": "GitHub App",
+              "url": "https://github.com/apps/google-cloud-build"
+            },
+            {
+              "type": "LinksTo",
+              "prefix_text": "App's \"Developer\" field",
+              "text": "github.com/GoogleCloudBuild",
+              "url": null
+            }
+          ]
+        },
+        {
+          "name": "Google Cloud and HashiCorp",
+          "github_url": "https://github.com/terraform-google-modules",
+          "verified_domain": "opensource.google.com",
+          "proof_steps": []
+        },
+        {
+          "name": "Google GitHub Actions",
+          "github_url": "https://github.com/google-github-actions",
+          "verified_domain": "opensource.google.com",
+          "proof_steps": []
+        },
+        {
+          "name": "Google Pay",
+          "github_url": "https://github.com/google-pay",
+          "verified_domain": "developers.google.com",
+          "proof_steps": []
+        },
+        {
+          "name": "GoogleContainerTools",
+          "github_url": "https://github.com/GoogleContainerTools",
+          "verified_domain": null,
+          "proof_steps": [
+            {
+              "type": "Base",
+              "text": "cloud.google.com",
+              "url": null
+            },
+            {
+              "type": "StandaloneHyperlink",
+              "text": "Blog post",
+              "url": "https://cloud.google.com/blog/products/application-development/introducing-jib-build-java-docker-images-better",
+              "archive_url": "https://web.archive.org/web/20250820091943/https://cloud.google.com/blog/products/application-development/introducing-jib-build-java-docker-images-better"
+            },
+            {
+              "type": "LinksTo",
+              "prefix_text": null,
+              "text": "github.com/GoogleContainerTools",
+              "url": null
+            }
+          ]
+        },
+        {
+          "name": "Google Creative Lab",
+          "github_url": "https://github.com/googlecreativelab",
+          "verified_domain": null,
+          "proof_steps": [
+            {
+              "type": "Base",
+              "text": "opensource.google.com",
+              "url": null
+            },
+            {
+              "type": "StandaloneHyperlink",
+              "text": "opensource.google.com/projects/quickdrawdataset",
+              "url": "https://opensource.google.com/projects/quickdrawdataset",
+              "archive_url": null
+            },
+            {
+              "type": "RedirectsTo",
+              "prefix_text": null,
+              "text": "github.com/googlecreativelab",
+              "url": null
+            }
+          ]
+        },
+        {
+          "name": "Google CodeLabs",
+          "github_url": "https://github.com/googlecodelabs",
+          "verified_domain": null,
+          "proof_steps": [
+            {
+              "type": "Base",
+              "text": "codelabs.developers.google.com",
+              "url": null
+            },
+            {
+              "type": "LinksTo",
+              "prefix_text": "\"Codelab tools on GitHub\" link",
+              "text": "github.com/googlecodelabs",
+              "url": null
+            }
+          ]
+        },
+        {
+          "name": "Noto Fonts",
+          "github_url": "https://github.com/notofonts",
+          "verified_domain": "google.com",
+          "proof_steps": []
+        },
+        {
+          "name": "Google Fonts",
+          "github_url": "https://github.com/googlefonts",
+          "verified_domain": null,
+          "proof_steps": [
+            {
+              "type": "Base",
+              "text": "fonts.google.com",
+              "url": null
+            },
+            {
+              "type": "StandaloneHyperlink",
+              "text": "fonts.google.com/noto/contribute",
+              "url": "https://fonts.google.com/noto/contribute",
+              "archive_url": "https://archive.ph/KB5yk#selection-685.0-685.10:~:text=issue%20in%20the-,noto%2Demoji,-repository."
+            },
+            {
+              "type": "LinksTo",
+              "prefix_text": "\"GitHub\" link",
+              "text": "github.com/googlefonts",
+              "url": null
+            }
+          ]
+        },
+        {
+          "name": "google-gemini",
+          "github_url": "https://github.com/google-gemini",
+          "verified_domain": null,
+          "proof_steps": [
+            {
+              "type": "Base",
+              "text": "ai.google.dev",
+              "url": null
+            },
+            {
+              "type": "StandaloneHyperlink",
+              "text": "ai.google.dev/gemini-api/docs",
+              "url": "https://ai.google.dev/gemini-api/docs",
+              "archive_url": "https://web.archive.org/web/20251122090229/https://ai.google.dev/gemini-api/docs"
+            },
+            {
+              "type": "LinksTo",
+              "prefix_text": "\"Cookbook\" link at the top",
+              "text": "github.com/google-gemini",
+              "url": null,
+              "archive_url": "https://web.archive.org/web/20250807082019/https://ai.google.dev/gemini-api/docs#:~:text=API%20Reference-,Cookbook,-Community"
+            }
+          ]
+        },
+        {
+          "name": "Google Security Operations",
+          "github_url": "https://github.com/chronicle",
+          "verified_domain": null,
+          "proof_steps": [
+            {
+              "type": "Base",
+              "text": "cloud.google.com",
+              "url": null
+            },
+            {
+              "type": "StandaloneHyperlink",
+              "text": "cloud.google.com/chronicle/docs/reference/ingestion-api",
+              "url": "https://cloud.google.com/chronicle/docs/reference/ingestion-api#:~:text=https%3A//github.com/chronicle/api%2Dsamples%2Dpython/blob/master/ingestion/create_entities.py",
+              "archive_url": "https://web.archive.org/web/20251205182722/https://docs.cloud.google.com/chronicle/docs/reference/ingestion-api"
+            },
+            {
+              "type": "LinksTo",
+              "prefix_text": "Example code",
+              "text": "github.com/chronicle/api-samples-python",
+              "url": null,
+              "archive_url": "https://web.archive.org/web/20250523122327/https://cloud.google.com/chronicle/docs/reference/ingestion-api#:~:text=https%3A//github.com/chronicle/api%2Dsamples%2Dpython/blob/master/ingestion/create_entities.py"
+            }
+          ]
+        },
+        {
+          "name": "Google Colaboratory",
+          "github_url": "https://github.com/googlecolab",
+          "verified_domain": null,
+          "proof_steps": [
+            {
+              "type": "Base",
+              "text": "colab.research.google.com",
+              "url": null,
+              "archive_url": "https://archive.ph/fEoc7#selection-2443.0-2443.36:~:text=getting%20started%20with%20google%20colab%20ai"
+            },
+            {
+              "type": "LinksTo",
+              "prefix_text": "'Getting Started' link",
+              "text": "github.com/googlecolab",
+              "url": null
+            }
+          ]
+        },
+        {
+          "name": "Google Research",
+          "github_url": "https://github.com/google-research",
+          "verified_domain": null,
+          "proof_steps": [
+            {
+              "type": "StandaloneHyperlink",
+              "text": "research.google",
+              "url": "https://research.google/",
+              "archive_url": "https://archive.ph/GhBF6"
+            },
+            {
+              "type": "LinksTo",
+              "prefix_text": "\"Follow Us\" section",
+              "text": "github.com/google-research",
+              "url": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Microsoft",
+      "accounts": [
+        {
+          "name": "Microsoft",
+          "github_url": "https://github.com/microsoft",
+          "verified_domain": "microsoft.com",
+          "proof_steps": []
+        },
+        {
+          "name": "Microsoft Docs",
+          "github_url": "https://github.com/microsoftdocs",
+          "verified_domain": "microsoft.com",
+          "proof_steps": []
+        },
+        {
+          "name": "Microsoft Learning",
+          "github_url": "https://github.com/microsoftlearning",
+          "verified_domain": null,
+          "proof_steps": [
+            {
+              "type": "Base",
+              "text": "github.com/microsoft",
+              "url": null
+            },
+            {
+              "type": "StandaloneHyperlink",
+              "text": "Documentation article",
+              "url": "https://github.com/microsoft/PartnerResources/blob/abe595f4f48f6c63a5d20572a3f14ee9cfa61b15/_docs/Skilling/Security%20Academy/Other%20pages/Certifications.md",
+              "archive_url": "https://web.archive.org/web/20250612164944/https://github.com/microsoft/PartnerResources/blob/abe595f4f48f6c63a5d20572a3f14ee9cfa61b15/_docs/Skilling/Security%20Academy/Other%20pages/Certifications.md"
+            },
+            {
+              "type": "LinksTo",
+              "prefix_text": "\"Labs\" column",
+              "text": "github.com/microsoftlearning",
+              "url": null
+            }
+          ]
+        },
+        {
+          "name": "Microsoft Azure",
+          "github_url": "https://github.com/Azure",
+          "verified_domain": "azure.microsoft.com",
+          "proof_steps": []
+        },
+        {
+          "name": "Azure Samples",
+          "github_url": "https://github.com/Azure-Samples",
+          "verified_domain": "azure.microsoft.com",
+          "proof_steps": []
+        },
+        {
+          "name": "Microsoft Edge",
+          "github_url": "https://github.com/MicrosoftEdge",
+          "verified_domain": null,
+          "proof_steps": [
+            {
+              "type": "StandaloneHyperlink",
+              "text": "Linked from official Microsoft Learn documentation",
+              "url": "https://learn.microsoft.com/en-us/microsoft-edge/devtools/samples/",
+              "archive_url": "https://archive.ph/ucWUo"
+            }
+          ]
+        },
+        {
+          "name": "Microsoft Archive",
+          "github_url": "https://github.com/microsoftarchive",
+          "verified_domain": "microsoft.com",
+          "proof_steps": []
+        },
+        {
+          "name": "Microsoft Graph",
+          "github_url": "https://github.com/microsoftgraph",
+          "verified_domain": null,
+          "proof_steps": [
+            {
+              "type": "StandaloneHyperlink",
+              "text": "Microsoft Learn sample page",
+              "url": "https://learn.microsoft.com/en-us/samples/microsoftgraph/msgraph-sample-github-connector-python/microsoft-graph-python-github-connector-sample/",
+              "archive_url": "https://web.archive.org/web/20251205181030/https://learn.microsoft.com/en-us/samples/microsoftgraph/msgraph-sample-github-connector-python/microsoft-graph-python-github-connector-sample/"
+            },
+            {
+              "type": "LinksTo",
+              "prefix_text": "\"Browse Code\" link",
+              "text": "github.com/microsoftgraph",
+              "url": null
+            }
+          ]
+        },
+        {
+          "name": ".NET Platform",
+          "github_url": "https://github.com/dotnet",
+          "verified_domain": "dotnetfoundation.org",
+          "proof_steps": []
+        },
+        {
+          "name": "ASP.NET",
+          "github_url": "https://github.com/aspnet",
+          "verified_domain": null,
+          "proof_steps": [
+            {
+              "type": "StandaloneHyperlink",
+              "text": "Named in official Microsoft security policy",
+              "url": "https://github.com/microsoft/verified-storage/security",
+              "archive_url": "https://web.archive.org/web/20251205181637/https://github.com/microsoft/verified-storage/security"
+            }
+          ]
+        },
+        {
+          "name": "Xamarin",
+          "github_url": "https://github.com/xamarin",
+          "verified_domain": "xamarin.com",
+          "proof_steps": [
+            {
+              "type": "StandaloneHyperlink",
+              "text": "Named in official Microsoft security policy",
+              "url": "https://github.com/microsoft/verified-storage/security",
+              "archive_url": "https://web.archive.org/web/20251205181637/https://github.com/microsoft/verified-storage/security"
+            }
+          ]
+        },
+        {
+          "name": "PowerShell Team",
+          "github_url": "https://github.com/PowerShell",
+          "verified_domain": "microsoft.com",
+          "proof_steps": []
+        },
+        {
+          "name": "Microsoft 365 Developer",
+          "github_url": "https://github.com/officedev",
+          "verified_domain": "microsoft.com",
+          "proof_steps": [
+            {
+              "type": "StandaloneHyperlink",
+              "text": "Linked from an official Microsoft 365 Developer Blog post",
+              "url": "https://devblogs.microsoft.com/microsoft365dev/add-in-samples-have-moved-to-github/",
+              "archive_url": "https://web.archive.org/web/20250523203918/https://devblogs.microsoft.com/microsoft365dev/add-in-samples-have-moved-to-github/"
+            }
+          ]
+        },
+        {
+          "name": "Visual Studio Code",
+          "github_url": "https://github.com/Visual-Studio-Code",
+          "verified_domain": "code.visualstudio.com",
+          "proof_steps": []
+        },
+        {
+          "name": "Microsoft Visual Studio",
+          "github_url": "https://github.com/microsoft-vs",
+          "verified_domain": "online.visualstudio.com",
+          "proof_steps": []
+        },
+        {
+          "name": "Clipchamp at Microsoft",
+          "github_url": "https://github.com/clipchamp",
+          "verified_domain": "clipchamp.com",
+          "proof_steps": []
+        },
+        {
+          "name": "Microsoft Feedback",
+          "github_url": "https://github.com/microsoftfeedback",
+          "verified_domain": "microsoft.com",
+          "proof_steps": []
+        },
+        {
+          "name": "Microsoft 1ES Tools",
+          "github_url": "https://github.com/microsoft1estools",
+          "verified_domain": "microsoft.com",
+          "proof_steps": []
+        },
+        {
+          "name": "Microsoft MakeCode",
+          "github_url": "https://github.com/Microsoft-MakeCode",
+          "verified_domain": "microsoft.com",
+          "proof_steps": []
+        },
+        {
+          "name": "Microsoft Open Technologies, Inc.",
+          "github_url": "https://github.com/MSOpenTech",
+          "verified_domain": "microsoft.com",
+          "proof_steps": []
+        }
+      ]
+    },
+    {
+      "name": "Apple",
+      "accounts": [
+        {
+          "name": "Apple",
+          "github_url": "https://github.com/apple",
+          "verified_domain": "apple.com",
+          "proof_steps": []
+        },
+        {
+          "name": "The Swift Programming Language",
+          "github_url": "https://github.com/swiftlang",
+          "verified_domain": "swift.org",
+          "proof_steps": [
+            {
+              "type": "Base",
+              "text": "opensource.apple.com",
+              "url": null
+            },
+            {
+              "type": "StandaloneHyperlink",
+              "text": "opensource.apple.com/projects/swift",
+              "url": "https://opensource.apple.com/projects/swift/",
+              "archive_url": null
+            },
+            {
+              "type": "LinksTo",
+              "prefix_text": null,
+              "text": "swift.org",
+              "url": null
+            }
+          ]
+        },
+        {
+          "name": "The WebKit Open Source Project",
+          "github_url": "https://github.com/webkit",
+          "verified_domain": "webkit.org",
+          "proof_steps": [
+            {
+              "type": "Base",
+              "text": "opensource.apple.com",
+              "url": null
+            },
+            {
+              "type": "StandaloneHyperlink",
+              "text": "opensource.apple.com/projects/webkit",
+              "url": "https://opensource.apple.com/projects/webkit/",
+              "archive_url": null
+            },
+            {
+              "type": "LinksTo",
+              "prefix_text": null,
+              "text": "webkit.org",
+              "url": null
+            }
+          ]
+        },
+        {
+          "name": "ml-explore",
+          "github_url": "https://github.com/ml-explore",
+          "verified_domain": null,
+          "proof_steps": [
+            {
+              "type": "Base",
+              "text": "opensource.apple.com",
+              "url": null
+            },
+            {
+              "type": "StandaloneHyperlink",
+              "text": "opensource.apple.com/projects/mlx",
+              "url": "https://opensource.apple.com/projects/mlx/",
+              "archive_url": null
+            },
+            {
+              "type": "LinksTo",
+              "prefix_text": null,
+              "text": "github.com/ml-explore",
+              "url": null
+            }
+          ]
+        },
+        {
+          "name": "Apple OSS Distributions",
+          "github_url": "https://github.com/apple-oss-distributions",
+          "verified_domain": null,
+          "proof_steps": [
+            {
+              "type": "StandaloneHyperlink",
+              "text": "Open Source Releases page",
+              "url": "https://opensource.apple.com/releases/",
+              "archive_url": null
+            },
+            {
+              "type": "LinksTo",
+              "prefix_text": "Numerous \"GitHub\" links:",
+              "text": "github.com/apple-oss-distributions",
+              "url": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
