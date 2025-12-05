@@ -1037,6 +1037,78 @@
               "url": null
             }
           ]
+        },
+		{
+          "name": "FoundationDB",
+          "github_url": "https://github.com/foundationdb",
+          "verified_domain": null,
+          "proof_steps": [
+            {
+              "type": "Base",
+              "text": "opensource.apple.com",
+              "url": null
+            },
+            {
+              "type": "StandaloneHyperlink",
+              "text": "opensource.apple.com/projects/foundationdb",
+              "url": "https://opensource.apple.com/projects/foundationdb/",
+              "archive_url": null
+            },
+            {
+              "type": "LinksTo",
+              "prefix_text": null,
+              "text": "github.com/foundationdb",
+              "url": null
+            }
+          ]
+        },
+		{
+          "name": "ResearchKit",
+          "github_url": "https://github.com/ResearchKit",
+          "verified_domain": null,
+          "proof_steps": [
+            {
+              "type": "Base",
+              "text": "opensource.apple.com",
+              "url": null
+            },
+            {
+              "type": "StandaloneHyperlink",
+              "text": "opensource.apple.com/projects/researchkit",
+              "url": "https://opensource.apple.com/projects/researchkit/",
+              "archive_url": null
+            },
+            {
+              "type": "LinksTo",
+              "prefix_text": null,
+              "text": "github.com/ResearchKit",
+              "url": null
+            }
+          ]
+        },
+		{
+          "name": "CareKit",
+          "github_url": "https://github.com/carekit-apple",
+          "verified_domain": null,
+          "proof_steps": [
+            {
+              "type": "Base",
+              "text": "opensource.apple.com",
+              "url": null
+            },
+            {
+              "type": "StandaloneHyperlink",
+              "text": "opensource.apple.com/projects/carekit",
+              "url": "https://opensource.apple.com/projects/carekit/",
+              "archive_url": null
+            },
+            {
+              "type": "LinksTo",
+              "prefix_text": null,
+              "text": "github.com/carekit-apple",
+              "url": null
+            }
+          ]
         }
       ]
     }
