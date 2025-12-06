@@ -9,7 +9,7 @@ A standalone HTML tool that converts the source JSON data into the formatted Mar
 ### Usage
 
 1. Open `Readme_Generator.html` in any modern web browser.
-2. Open `../Data/Verified_Repos_Data.json` in a text editor and copy its contents.
+2. Open `../Data/Verified_Accounts_Data.json` in a text editor and copy its contents.
 3. Paste the JSON into the **"1. JSON Input"** box in the browser tool.
 4. Click **Generate Markdown**.
 5. Click **Copy** to grab the output.

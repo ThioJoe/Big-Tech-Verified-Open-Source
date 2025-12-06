@@ -13,7 +13,7 @@ Before contributing, please review the specific documentation for the tools and 
 ## Important: Do Not Edit README.md Directly
 
 The main `README.md` is auto-generated. Any manual changes made to it will be overwritten.
-**Always verify and edit the data in `Data/Verified_Repos_Data.json`.**
+**Always verify and edit the data in `Data/Verified_Accounts_Data.json`.**
 
 ---
 
@@ -27,7 +27,7 @@ We only accept accounts where ownership can be proven via a **Chain of Custody**
 If there's another form of proof that doesn't fit the current JSON structure, feel free to create an issue thread to ask. I could add additional types if necessary.
 
 ### 2. Update the Data
-1.  Open `Data/Verified_Repos_Data.json`.
+1.  Open `Data/Verified_Accounts_Data.json`.
 2.  Find the company block (or add a new one if necessary).
 3.  Add the account details.
     * If the account has a "Verified" badge from GitHub (green checkmark), set `"verified_domain"` to that domain.
@@ -36,12 +36,12 @@ If there's another form of proof that doesn't fit the current JSON structure, fe
 ### 3. Generate the README
 Once the JSON is updated, you must regenerate the main README to reflect changes.
 1.  Open `Tools/Readme_Generator.html` in your web browser.
-2.  Paste the content of your updated `Data/Verified_Repos_Data.json` into the input box.
+2.  Paste the content of your updated `Data/Verified_Accounts_Data.json` into the input box.
 3.  Click **Generate Markdown**.
 4.  Copy the output and overwrite the content of `README.md` in the root of this repo.
 
 ### 4. Submit Pull Request
-* Commit both the updated `Data/Verified_Repos_Data.json` and the regenerated `README.md`.
+* Commit both the updated `Data/Verified_Accounts_Data.json` and the regenerated `README.md`.
 * In your PR description, please include a link to the proof if it isn't obvious in the JSON data.
 
 ---

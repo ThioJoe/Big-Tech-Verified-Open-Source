@@ -1,6 +1,6 @@
 # Data Documentation
 
-This directory contains `Verified_Repos_Data.json`, which serves as the **source of truth** for the "Verified Open Source GitHub Accounts" list. 
+This directory contains `Verified_Accounts_Data.json`, which serves as the **source of truth** for the "Verified Open Source GitHub Accounts" list. 
 
 Instead of manually editing the main README table, all data updates should be made in the JSON file. This separates the data from the presentation layer.
 
@@ -125,7 +125,7 @@ If `verified_domain` is `null`, the generator ensures the Markdown table cell re
 ## Generating the README
 
 To update the main `README.md`:
-1. Edit `Verified_Repos_Data.json`.
+1. Edit `Verified_Accounts_Data.json`.
 2. Open the HTML Generator tool in your browser.
 3. Paste the JSON content.
 4. Click **Generate Markdown**.
