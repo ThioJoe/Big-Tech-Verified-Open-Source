@@ -8,6 +8,15 @@ This document lists open-source GitHub organizations and accounts that have been
 
 | Organization/Account | Verified Domain | Proof of Association |
 |---|---|---|
+| **[Amazon](https://github.com/amzn)** | | `developer.amazon.com`<br>↳ [Amazon API Documentation](https://developer.amazon.com/docs/amazon-pay-api-v2/introduction.html#sdk)<br>↳ "SDK" Section Links To 🠊 [`github.com/amzn`](https://github.com/amzn/amazon-pay-api-sdk-php) |
+| **[Amazon Web Services](https://github.com/aws)** | `amazon.com` | |
+| **[Amazon Archives](https://github.com/amazon-archives)** | `amazon.com` | |
+| **[Amazon Q Developer](https://github.com/Amazon-Q-Developer)** | `amazon.com` | |
+| **[amazon-freertos](https://github.com/amazon-freertos)** | `amazon.com` | |
+| **[Amazon Web Services - Labs](https://github.com/awslabs)** | `amazon.com` | |
+| **[AWS Samples](https://github.com/aws-samples/)** | `amazon.com` | |
+| **[Amazon Linux](https://github.com/amazonlinux)** | `amazonlinux.com` | `docs.aws.amazon.com`<br>↳ [`docs.aws.amazon.com/datasync/latest/userguide/datasync-network.html`](https://docs.aws.amazon.com/datasync/latest/userguide/datasync-network.html)<br>↳ Sample Code Links To 🠊 `cdn.amazonlinux.com` |
+| **[Amazon Science](https://github.com/amazon-science)** | `amazon.science` | `amazon.com`<br>↳ [`amazon.com/research`](https://www.amazon.com/research/)<br>↳ Redirects To 🠊 [`amazon.science`](https://www.amazon.science/) |
 | **[awsdocs](https://github.com/awsdocs)** | | `docs.aws.amazon.com`<br>↳ [AWS SDK for C++ Documentation](https://docs.aws.amazon.com/sdk-for-cpp/latest/api/aws-cpp-sdk-s3-encryption/html/class_aws_1_1_s3_encryption_1_1_materials_1_1_k_m_s_with_context_encryption_materials.html)<br>↳ "Examples" link Links To 🠊 `github.com/awsdocs/aws-doc-sdk-examples` |
 | **[amazon-contributing](https://github.com/amazon-contributing)** | | `docs.aws.amazon.com`<br>↳ [CloudWatch Documentation](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-OTLPAdvancedsetup.html)<br>↳ Configuration snippets reference Links To 🠊 `github.com/amazon-contributing/opentelemetry-collector-contrib` |
 | **[amazon-connect](https://github.com/amazon-connect)** | | `aws.amazon.com`<br>↳ [AWS Contact Center Blog](https://aws.amazon.com/blogs/contact-center/analyze-customer-satisfaction-scores-with-post-contact-surveys-using-amazon-connect-tasks/)<br>↳ "subscribe today to..." Links To 🠊 `github.com/amazon-connect` |
@@ -15,17 +24,8 @@ This document lists open-source GitHub organizations and accounts that have been
 | **[payfort](https://github.com/payfort)** | | `docs.payfort.com`<br>↳ [Prestashop Integration Guide (PDF)](https://docs.payfort.com/pdf/plugins/Prestashop%20Integration%20Guide.pdf)<br>↳ "Download the plugin" link Links To 🠊 `github.com/payfort/prestashop-payfort` |
 | **[amazon-gamelift](https://github.com/amazon-gamelift)** | | `docs.aws.amazon.com`<br>↳ [GameLift Developer Guide](https://docs.aws.amazon.com/gameliftservers/latest/developerguide/gamelift-wrapper-tutorial.html)<br>↳ Tutorial command Links To 🠊 `github.com/amazon-gamelift/amazon-gamelift-servers-game-server-wrapper` |
 | **[Amazon Ion](https://github.com/amazon-ion)** | | `aws.amazon.com`<br>↳ [AWS Big Data Blog](https://aws.amazon.com/blogs/big-data/analyze-amazon-ion-datasets-using-amazon-athena/)<br>↳ "Amazon Ion" link Links To 🠊 [`amzn.github.io/ion-docs/`](https://amzn.github.io/ion-docs/)<br>↳ Redirects To 🠊 [`amazon-ion.github.io`](https://amazon-ion.github.io/) |
-| **[Amazon](https://github.com/amzn)** | | `developer.amazon.com`<br>↳ [Amazon API Documentation](https://developer.amazon.com/docs/amazon-pay-api-v2/introduction.html#sdk)<br>↳ "SDK" Section Links To 🠊 [`github.com/amzn`](https://github.com/amzn/amazon-pay-api-sdk-php) |
 | **[AmazonAppDev](https://github.com/AmazonAppDev)** | | `developer.amazon.com`<br>↳ Footer "Follow Us" Section Links To 🠊 `github.com/AmazonAppDev` |
-| **[Amazon Science](https://github.com/amazon-science)** | `amazon.science` | `amazon.com`<br>↳ [`amazon.com/research`](https://www.amazon.com/research/)<br>↳ Redirects To 🠊 [`amazon.science`](https://www.amazon.science/) |
-| **[Amazon Linux](https://github.com/amazonlinux)** | `amazonlinux.com` | `docs.aws.amazon.com`<br>↳ [`docs.aws.amazon.com/datasync/latest/userguide/datasync-network.html`](https://docs.aws.amazon.com/datasync/latest/userguide/datasync-network.html)<br>↳ Sample Code Links To 🠊 `cdn.amazonlinux.com` |
 | **[Amazon Nova](https://github.com/amazon-nova-api)** | | `nova.amazon.com`<br>↳ [`nova.amazon.com/dev`](https://nova.amazon.com/dev)<br>↳ Quick Start Guides Links To 🠊 `github.com/amazon-nova-api` |
-| **[Amazon Web Services](https://github.com/aws)** | `amazon.com` | |
-| **[Amazon Archives](https://github.com/amazon-archives)** | `amazon.com` | |
-| **[Amazon Q Developer](https://github.com/Amazon-Q-Developer)** | `amazon.com` | |
-| **[amazon-freertos](https://github.com/amazon-freertos)** | `amazon.com` | |
-| **[Amazon Web Services - Labs](https://github.com/awslabs)** | `amazon.com` | |
-| **[AWS Samples](https://github.com/aws-samples/)** | `amazon.com` | |
 
 ---
 
@@ -52,6 +52,7 @@ This document lists open-source GitHub organizations and accounts that have been
 | Organization/Account | Verified Domain | Proof of Association |
 |---|---|---|
 | **[Google](https://github.com/google)** | `google.com` | |
+| **[Noto Fonts](https://github.com/notofonts)** | `google.com` | |
 | **[GoogleChromeLabs](https://github.com/GoogleChromeLabs)** | | `developer.chrome.com`<br>↳ [Blog post](https://developer.chrome.com/blog/chrome-for-testing)<sup> [[A]](https://web.archive.org/web/20250707164200/https://developer.chrome.com/blog/chrome-for-testing)</sup><br>↳ "JSON API Endpoints" Links To 🠊 `github.com/GoogleChromeLabs` |
 | **[GoogleChrome](https://github.com/GoogleChrome)** | | `opensource.google.com`<br>↳ [`opensource.google.com/projects/audion`](https://opensource.google.com/projects/audion)<br>↳ Redirects To 🠊 `github.com/GoogleChrome` |
 | **[tensorflow](https://github.com/tensorflow)** | | `opensource.google`<br>↳ [`opensource.google/projects/tensorflow`](https://opensource.google/projects/tensorflow)<br>↳ Links To 🠊 `tensorflow.org`<br>↳ "GitHub" link Links To 🠊 `github.com/tensorflow` |
@@ -74,7 +75,6 @@ This document lists open-source GitHub organizations and accounts that have been
 | **[GoogleContainerTools](https://github.com/GoogleContainerTools)** | | `cloud.google.com`<br>↳ [Blog post](https://cloud.google.com/blog/products/application-development/introducing-jib-build-java-docker-images-better)<sup> [[A]](https://web.archive.org/web/20250820091943/https://cloud.google.com/blog/products/application-development/introducing-jib-build-java-docker-images-better)</sup><br>↳ Links To 🠊 `github.com/GoogleContainerTools` |
 | **[Google Creative Lab](https://github.com/googlecreativelab)** | | `opensource.google.com`<br>↳ [`opensource.google.com/projects/quickdrawdataset`](https://opensource.google.com/projects/quickdrawdataset)<br>↳ Redirects To 🠊 `github.com/googlecreativelab` |
 | **[Google CodeLabs](https://github.com/googlecodelabs)** | | `codelabs.developers.google.com`<br>↳ "Codelab tools on GitHub" link Links To 🠊 `github.com/googlecodelabs` |
-| **[Noto Fonts](https://github.com/notofonts)** | `google.com` | |
 | **[Google Fonts](https://github.com/googlefonts)** | | `fonts.google.com`<br>↳ [`fonts.google.com/noto/contribute`](https://fonts.google.com/noto/contribute)<sup> [[A]](https://archive.ph/KB5yk#selection-685.0-685.10:~:text=issue%20in%20the-,noto%2Demoji,-repository.)</sup><br>↳ "GitHub" link Links To 🠊 `github.com/googlefonts` |
 | **[google-gemini](https://github.com/google-gemini)** | | `ai.google.dev`<br>↳ [`ai.google.dev/gemini-api/docs`](https://ai.google.dev/gemini-api/docs)<sup> [[A]](https://web.archive.org/web/20251122090229/https://ai.google.dev/gemini-api/docs)</sup><br>↳ "Cookbook" link at the top Links To 🠊 `github.com/google-gemini`<sup> [[A]](https://web.archive.org/web/20250807082019/https://ai.google.dev/gemini-api/docs#:~:text=API%20Reference-,Cookbook,-Community)</sup> |
 | **[Google Security Operations](https://github.com/chronicle)** | | `cloud.google.com`<br>↳ [Google Cloud Documentation](https://cloud.google.com/chronicle/docs/reference/ingestion-api#:~:text=https%3A//github.com/chronicle/api%2Dsamples%2Dpython/blob/master/ingestion/create_entities.py)<sup> [[A]](https://web.archive.org/web/20251205182722/https://docs.cloud.google.com/chronicle/docs/reference/ingestion-api)</sup><br>↳ Example code Links To 🠊 `github.com/chronicle/api-samples-python`<sup> [[A]](https://web.archive.org/web/20250523122327/https://cloud.google.com/chronicle/docs/reference/ingestion-api#:~:text=https%3A//github.com/chronicle/api%2Dsamples%2Dpython/blob/master/ingestion/create_entities.py)</sup> |

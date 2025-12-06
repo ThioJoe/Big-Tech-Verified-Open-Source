@@ -4,6 +4,110 @@
       "name": "Amazon",
       "accounts": [
         {
+          "name": "Amazon",
+          "github_url": "https://github.com/amzn",
+          "verified_domain": null,
+          "proof_steps": [
+            {
+              "type": "Base",
+              "text": "developer.amazon.com",
+              "url": null
+            },
+            {
+              "type": "StandaloneHyperlink",
+              "text": "Amazon API Documentation",
+              "url": "https://developer.amazon.com/docs/amazon-pay-api-v2/introduction.html#sdk"
+            },
+            {
+              "type": "LinksTo",
+              "text": "github.com/amzn",
+              "url": "https://github.com/amzn/amazon-pay-api-sdk-php",
+              "prefix_text": "\"SDK\" Section"
+            }
+          ]
+        },
+        {
+          "name": "Amazon Web Services",
+          "github_url": "https://github.com/aws",
+          "verified_domain": "amazon.com",
+          "proof_steps": []
+        },
+        {
+          "name": "Amazon Archives",
+          "github_url": "https://github.com/amazon-archives",
+          "verified_domain": "amazon.com",
+          "proof_steps": []
+        },
+        {
+          "name": "Amazon Q Developer",
+          "github_url": "https://github.com/Amazon-Q-Developer",
+          "verified_domain": "amazon.com",
+          "proof_steps": []
+        },
+        {
+          "name": "amazon-freertos",
+          "github_url": "https://github.com/amazon-freertos",
+          "verified_domain": "amazon.com",
+          "proof_steps": []
+        },
+        {
+          "name": "Amazon Web Services - Labs",
+          "github_url": "https://github.com/awslabs",
+          "verified_domain": "amazon.com",
+          "proof_steps": []
+        },
+        {
+          "name": "AWS Samples",
+          "github_url": "https://github.com/aws-samples/",
+          "verified_domain": "amazon.com",
+          "proof_steps": []
+        },
+        {
+          "name": "Amazon Linux",
+          "github_url": "https://github.com/amazonlinux",
+          "verified_domain": "amazonlinux.com",
+          "proof_steps": [
+            {
+              "type": "Base",
+              "text": "docs.aws.amazon.com",
+              "url": null
+            },
+            {
+              "type": "StandaloneHyperlink",
+              "text": "docs.aws.amazon.com/datasync/latest/userguide/datasync-network.html",
+              "url": "https://docs.aws.amazon.com/datasync/latest/userguide/datasync-network.html"
+            },
+            {
+              "type": "LinksTo",
+              "text": "cdn.amazonlinux.com",
+              "url": null,
+              "prefix_text": "Sample Code"
+            }
+          ]
+        },
+        {
+          "name": "Amazon Science",
+          "github_url": "https://github.com/amazon-science",
+          "verified_domain": "amazon.science",
+          "proof_steps": [
+            {
+              "type": "Base",
+              "text": "amazon.com",
+              "url": null
+            },
+            {
+              "type": "StandaloneHyperlink",
+              "text": "amazon.com/research",
+              "url": "https://www.amazon.com/research/"
+            },
+            {
+              "type": "RedirectsTo",
+              "text": "amazon.science",
+              "url": "https://www.amazon.science/"
+            }
+          ]
+        },
+        {
           "name": "awsdocs",
           "github_url": "https://github.com/awsdocs",
           "verified_domain": null,
@@ -171,29 +275,6 @@
           ]
         },
         {
-          "name": "Amazon",
-          "github_url": "https://github.com/amzn",
-          "verified_domain": null,
-          "proof_steps": [
-            {
-              "type": "Base",
-              "text": "developer.amazon.com",
-              "url": null
-            },
-            {
-              "type": "StandaloneHyperlink",
-              "text": "Amazon API Documentation",
-              "url": "https://developer.amazon.com/docs/amazon-pay-api-v2/introduction.html#sdk"
-            },
-            {
-              "type": "LinksTo",
-              "text": "github.com/amzn",
-              "url": "https://github.com/amzn/amazon-pay-api-sdk-php",
-              "prefix_text": "\"SDK\" Section"
-            }
-          ]
-        },
-        {
           "name": "AmazonAppDev",
           "github_url": "https://github.com/AmazonAppDev",
           "verified_domain": null,
@@ -208,51 +289,6 @@
               "text": "github.com/AmazonAppDev",
               "url": null,
               "prefix_text": "Footer \"Follow Us\" Section"
-            }
-          ]
-        },
-        {
-          "name": "Amazon Science",
-          "github_url": "https://github.com/amazon-science",
-          "verified_domain": "amazon.science",
-          "proof_steps": [
-            {
-              "type": "Base",
-              "text": "amazon.com",
-              "url": null
-            },
-            {
-              "type": "StandaloneHyperlink",
-              "text": "amazon.com/research",
-              "url": "https://www.amazon.com/research/"
-            },
-            {
-              "type": "RedirectsTo",
-              "text": "amazon.science",
-              "url": "https://www.amazon.science/"
-            }
-          ]
-        },
-        {
-          "name": "Amazon Linux",
-          "github_url": "https://github.com/amazonlinux",
-          "verified_domain": "amazonlinux.com",
-          "proof_steps": [
-            {
-              "type": "Base",
-              "text": "docs.aws.amazon.com",
-              "url": null
-            },
-            {
-              "type": "StandaloneHyperlink",
-              "text": "docs.aws.amazon.com/datasync/latest/userguide/datasync-network.html",
-              "url": "https://docs.aws.amazon.com/datasync/latest/userguide/datasync-network.html"
-            },
-            {
-              "type": "LinksTo",
-              "text": "cdn.amazonlinux.com",
-              "url": null,
-              "prefix_text": "Sample Code"
             }
           ]
         },
@@ -278,42 +314,6 @@
               "prefix_text": "Quick Start Guides"
             }
           ]
-        },
-        {
-          "name": "Amazon Web Services",
-          "github_url": "https://github.com/aws",
-          "verified_domain": "amazon.com",
-          "proof_steps": []
-        },
-        {
-          "name": "Amazon Archives",
-          "github_url": "https://github.com/amazon-archives",
-          "verified_domain": "amazon.com",
-          "proof_steps": []
-        },
-        {
-          "name": "Amazon Q Developer",
-          "github_url": "https://github.com/Amazon-Q-Developer",
-          "verified_domain": "amazon.com",
-          "proof_steps": []
-        },
-        {
-          "name": "amazon-freertos",
-          "github_url": "https://github.com/amazon-freertos",
-          "verified_domain": "amazon.com",
-          "proof_steps": []
-        },
-        {
-          "name": "Amazon Web Services - Labs",
-          "github_url": "https://github.com/awslabs",
-          "verified_domain": "amazon.com",
-          "proof_steps": []
-        },
-        {
-          "name": "AWS Samples",
-          "github_url": "https://github.com/aws-samples/",
-          "verified_domain": "amazon.com",
-          "proof_steps": []
         }
       ]
     },
@@ -464,6 +464,12 @@
         {
           "name": "Google",
           "github_url": "https://github.com/google",
+          "verified_domain": "google.com",
+          "proof_steps": []
+        },
+        {
+          "name": "Noto Fonts",
+          "github_url": "https://github.com/notofonts",
           "verified_domain": "google.com",
           "proof_steps": []
         },
@@ -950,12 +956,6 @@
               "url": null
             }
           ]
-        },
-        {
-          "name": "Noto Fonts",
-          "github_url": "https://github.com/notofonts",
-          "verified_domain": "google.com",
-          "proof_steps": []
         },
         {
           "name": "Google Fonts",
