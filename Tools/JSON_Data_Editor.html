@@ -5,22 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Verified Repos Data Manager</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Import Marked.js for Markdown rendering -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        /* Custom scrollbar for a cleaner look */
+        
+        /* Custom scrollbar */
         ::-webkit-scrollbar { width: 8px; height: 8px; }
         ::-webkit-scrollbar-track { background: #f1f1f1; }
         ::-webkit-scrollbar-thumb { background: #c1c1c1; border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: #a8a8a8; }
+
+        /* GitHub-like Markdown Styles for Preview */
+        .markdown-body { font-family: -apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji"; font-size: 14px; line-height: 1.5; color: #24292f; }
+        .markdown-body table { border-spacing: 0; border-collapse: collapse; width: 100%; margin-top: 0; margin-bottom: 16px; display: block; width: max-content; max-width: 100%; overflow: auto; }
+        .markdown-body tr { background-color: #ffffff; border-top: 1px solid #d0d7de; }
+        .markdown-body tr:nth-child(2n) { background-color: #f6f8fa; }
+        .markdown-body td, .markdown-body th { padding: 6px 13px; border: 1px solid #d0d7de; }
+        .markdown-body th { font-weight: 600; }
+        .markdown-body a { color: #0969da; text-decoration: none; }
+        .markdown-body a:hover { text-decoration: underline; }
+        .markdown-body code { padding: 0.2em 0.4em; margin: 0; font-size: 85%; background-color: rgba(175,184,193,0.2); border-radius: 6px; font-family: ui-monospace,SFMono-Regular,SF Mono,Menlo,Consolas,Liberation Mono,monospace; }
+        .markdown-body h2 { border-bottom: 1px solid #d0d7de; padding-bottom: 0.3em; font-size: 1.5em; font-weight: 600; margin-top: 24px; margin-bottom: 16px; }
+
+        /* Drag and Drop Styles */
+        .drag-over { border-top: 2px solid #3b82f6 !important; }
     </style>
 </head>
 <body class="bg-gray-100 h-screen flex flex-col overflow-hidden">
 
+    <!-- Top Bar -->
     <header class="bg-gray-800 text-white p-4 flex justify-between items-center shadow-md z-10">
         <div class="flex items-center gap-3">
             <h1 class="font-bold text-xl"><i class="fa-solid fa-database mr-2"></i>Data Manager</h1>
-            <span class="text-xs bg-gray-700 px-2 py-1 rounded text-gray-300">Verified_Accounts_Data.json</span>
+            <span class="text-xs bg-gray-700 px-2 py-1 rounded text-gray-300">Verified_Repos_Data.json</span>
         </div>
         <div class="flex gap-2">
             <button onclick="document.getElementById('fileInput').click()" class="bg-gray-700 hover:bg-gray-600 px-4 py-2 rounded text-sm transition font-medium">
@@ -33,8 +52,10 @@
         </div>
     </header>
 
+    <!-- Main Content -->
     <div class="flex-grow flex overflow-hidden">
         
+        <!-- Left Sidebar: Tree View -->
         <div class="w-1/3 min-w-[300px] bg-white border-r border-gray-200 flex flex-col">
             <div class="p-3 bg-gray-50 border-b border-gray-200 flex justify-between items-center">
                 <h2 class="font-bold text-gray-700 text-sm">Companies & Accounts</h2>
@@ -43,29 +64,45 @@
                 </button>
             </div>
             <div id="treeContainer" class="flex-grow overflow-y-auto p-2 space-y-1">
-                </div>
+                <!-- Tree items injected here -->
+            </div>
         </div>
 
+        <!-- Right Panel: Editor -->
         <div class="w-2/3 flex flex-col bg-gray-50">
+            <!-- Empty State -->
             <div id="emptyState" class="flex-grow flex flex-col items-center justify-center text-gray-400">
                 <i class="fa-regular fa-hand-point-left text-4xl mb-4"></i>
                 <p>Select an item on the left to edit</p>
             </div>
 
+            <!-- Editor Form Container -->
             <div id="editorContainer" class="hidden flex-col h-full overflow-hidden">
-                <div id="editorHeader" class="bg-white border-b border-gray-200 p-4 shadow-sm flex justify-between items-center">
+                <div id="editorHeader" class="bg-white border-b border-gray-200 p-4 shadow-sm flex justify-between items-center flex-shrink-0">
                     <h2 id="editorTitle" class="font-bold text-lg text-gray-800">Edit</h2>
                     <button onclick="deleteCurrentItem()" class="text-red-500 hover:text-red-700 text-sm font-medium">
                         <i class="fa-solid fa-trash-can mr-1"></i>Delete
                     </button>
                 </div>
                 
+                <!-- Scrollable Form Area -->
                 <div id="formContent" class="flex-grow overflow-y-auto p-6 space-y-6">
+                    <!-- Dynamic form injected here -->
+                </div>
+
+                <!-- Preview Pane (Fixed at Bottom) -->
+                <div class="bg-white border-t border-gray-300 flex-shrink-0 h-64 flex flex-col shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)]">
+                    <div class="flex justify-between items-center px-4 py-2 bg-gray-100 border-b border-gray-200">
+                        <span class="text-xs font-bold uppercase tracking-wider text-gray-600"><i class="fa-brands fa-markdown mr-1"></i> Live Preview</span>
                     </div>
+                    <!-- Rendered HTML goes here -->
+                    <div id="livePreview" class="markdown-body flex-grow overflow-y-auto p-4 bg-white"></div>
+                </div>
             </div>
         </div>
     </div>
 
+    <!-- Raw JSON Modal (Hidden by default, used for export) -->
     <textarea id="jsonOutput" class="hidden"></textarea>
 
     <script>
@@ -135,6 +172,10 @@
                 header.innerHTML = `
                     <i class="fa-solid fa-building mr-2 text-gray-400 ${isCompSelected ? 'text-blue-500' : ''}"></i>
                     <span class="truncate flex-grow">${escapeHtml(company.name || 'Unnamed Company')}</span>
+                    <div class="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition mr-2">
+                        <button onclick="event.stopPropagation(); moveCompany(${cIndex}, -1)" class="p-1 hover:bg-gray-200 rounded text-gray-500" title="Move Up"><i class="fa-solid fa-arrow-up text-xs"></i></button>
+                        <button onclick="event.stopPropagation(); moveCompany(${cIndex}, 1)" class="p-1 hover:bg-gray-200 rounded text-gray-500" title="Move Down"><i class="fa-solid fa-arrow-down text-xs"></i></button>
+                    </div>
                     <button onclick="event.stopPropagation(); addAccount(${cIndex})" class="opacity-0 group-hover:opacity-100 text-xs bg-gray-200 hover:bg-gray-300 px-1.5 py-0.5 rounded text-gray-600" title="Add Account">
                         <i class="fa-solid fa-plus"></i>
                     </button>
@@ -150,12 +191,27 @@
                         const accDiv = document.createElement('div');
                         const isAccSelected = selectedPath && selectedPath.type === 'account' && selectedPath.cIndex === cIndex && selectedPath.aIndex === aIndex;
                         
-                        accDiv.className = `flex items-center p-1.5 rounded cursor-pointer text-sm transition ${isAccSelected ? 'bg-blue-50 text-blue-700 font-medium' : 'text-gray-600 hover:bg-gray-100'}`;
+                        // Drag and Drop Attributes
+                        accDiv.setAttribute('draggable', 'true');
+                        accDiv.ondragstart = (e) => dragStart(e, cIndex, aIndex);
+                        accDiv.ondragover = (e) => dragOver(e);
+                        accDiv.ondrop = (e) => drop(e, cIndex, aIndex);
+                        accDiv.ondragleave = (e) => dragLeave(e);
+
+                        accDiv.className = `flex items-center p-1.5 rounded cursor-pointer text-sm transition border border-transparent ${isAccSelected ? 'bg-blue-50 text-blue-700 font-medium' : 'text-gray-600 hover:bg-gray-100'}`;
                         accDiv.onclick = (e) => { e.stopPropagation(); selectAccount(cIndex, aIndex); };
-                        accDiv.innerHTML = `
+                        
+                        let inner = `
                             <i class="fa-brands fa-github mr-2 ${isAccSelected ? 'text-blue-500' : 'text-gray-400'}"></i>
-                            <span class="truncate">${escapeHtml(acc.name || 'Unnamed Account')}</span>
+                            <span class="truncate mr-2">${escapeHtml(acc.name || 'Unnamed Account')}</span>
                         `;
+
+                        // Verified Tag
+                        if (acc.verified_domain) {
+                            inner += `<span class="ml-auto text-[10px] bg-green-50 text-green-700 px-1.5 py-0.5 rounded border border-green-200 flex-shrink-0" title="Verified Domain"><i class="fa-solid fa-check mr-1"></i>${escapeHtml(acc.verified_domain)}</span>`;
+                        }
+
+                        accDiv.innerHTML = inner;
                         accList.appendChild(accDiv);
                     });
                     compDiv.appendChild(accList);
@@ -164,6 +220,76 @@
                 container.appendChild(compDiv);
             });
         }
+
+        // --- Drag and Drop Logic ---
+        function dragStart(e, cIndex, aIndex) {
+            e.dataTransfer.setData("application/json", JSON.stringify({cIndex, aIndex}));
+            e.dataTransfer.effectAllowed = "move";
+        }
+
+        function dragOver(e) {
+            e.preventDefault(); // Necessary to allow dropping
+            e.dataTransfer.dropEffect = "move";
+            e.currentTarget.classList.add("drag-over");
+        }
+
+        function dragLeave(e) {
+            e.currentTarget.classList.remove("drag-over");
+        }
+
+        function drop(e, targetCIndex, targetAIndex) {
+            e.preventDefault();
+            e.currentTarget.classList.remove("drag-over");
+
+            const data = JSON.parse(e.dataTransfer.getData("application/json"));
+            const srcCIndex = data.cIndex;
+            const srcAIndex = data.aIndex;
+
+            // Only allow dragging within the same company for simplicity (as requested "entries within a company")
+            if (srcCIndex !== targetCIndex) return;
+            if (srcAIndex === targetAIndex) return;
+
+            // Perform the move
+            const accounts = db.companies[srcCIndex].accounts;
+            const [movedItem] = accounts.splice(srcAIndex, 1);
+            accounts.splice(targetAIndex, 0, movedItem);
+
+            // Update Selection if we moved the currently selected item
+            if (selectedPath && selectedPath.type === 'account' && selectedPath.cIndex === srcCIndex) {
+                if (selectedPath.aIndex === srcAIndex) {
+                    selectedPath.aIndex = targetAIndex;
+                } else if (srcAIndex < selectedPath.aIndex && targetAIndex >= selectedPath.aIndex) {
+                    selectedPath.aIndex--;
+                } else if (srcAIndex > selectedPath.aIndex && targetAIndex <= selectedPath.aIndex) {
+                    selectedPath.aIndex++;
+                }
+            }
+
+            renderTree();
+        }
+
+        // --- Reordering Logic ---
+        function moveCompany(index, direction) {
+            if (index + direction < 0 || index + direction >= db.companies.length) return;
+            
+            const temp = db.companies[index];
+            db.companies[index] = db.companies[index + direction];
+            db.companies[index + direction] = temp;
+
+            // Update Selection Tracking
+            if (selectedPath) {
+                if (selectedPath.type === 'company') {
+                    if (selectedPath.index === index) selectedPath.index += direction;
+                    else if (selectedPath.index === index + direction) selectedPath.index -= direction;
+                } else {
+                    if (selectedPath.cIndex === index) selectedPath.cIndex += direction;
+                    else if (selectedPath.cIndex === index + direction) selectedPath.cIndex -= direction;
+                }
+            }
+
+            renderTree();
+        }
+
 
         // --- Selection Logic ---
         function selectCompany(index) {
@@ -232,6 +358,8 @@
             } else {
                 renderAccountForm(formContent);
             }
+            
+            renderPreview(); // Update preview initially
         }
 
         function renderCompanyForm(container) {
@@ -294,7 +422,8 @@
                         </button>
                     </div>
                     <div id="stepsList" class="space-y-4">
-                        </div>
+                        <!-- Steps injected here -->
+                    </div>
                 </div>
             `;
             container.innerHTML = html;
@@ -304,12 +433,14 @@
         // --- Data Updates ---
         function updateCompany(field, value) {
             db.companies[selectedPath.index][field] = value;
-            renderTree(); // Update sidebar name dynamically
+            renderTree();
+            renderPreview();
         }
 
         function updateAccount(field, value) {
             db.companies[selectedPath.cIndex].accounts[selectedPath.aIndex][field] = value;
             if (field === 'name') renderTree();
+            renderPreview();
         }
 
         function toggleVerifiedDomain(isChecked) {
@@ -323,13 +454,15 @@
                 document.getElementById('verifiedDomainInput').value = "";
                 document.getElementById('verifiedDomainInput').disabled = true;
             }
+            renderPreview();
+            renderTree(); // Update tag in tree
         }
 
         // --- Steps Logic ---
         function addStep() {
             const steps = db.companies[selectedPath.cIndex].accounts[selectedPath.aIndex].proof_steps;
             steps.push({ type: "Base", text: "", url: null });
-            renderEditor(); // Full re-render to show new step
+            renderEditor(); 
         }
 
         function removeStep(index) {
@@ -350,22 +483,20 @@
         function updateStep(stepIndex, field, value) {
             const step = db.companies[selectedPath.cIndex].accounts[selectedPath.aIndex].proof_steps[stepIndex];
             
-            // Handle nulls for optional URL fields
             if ((field === 'url' || field === 'archive_url') && value.trim() === '') {
                 step[field] = null;
             } else {
                 step[field] = value;
             }
 
-            // Type change requires re-rendering this step to show/hide fields
             if (field === 'type') {
-                // Reset irrelevant fields when type changes to keep data clean
                 if (value === 'Base' || value === 'StandaloneHyperlink') delete step.prefix_text;
-                // Ensure defaults
                 if (value === 'Base' || value === 'LinksTo' || value === 'RedirectsTo') {
                     if(step.url === undefined) step.url = null;
                 }
                 renderEditor(); 
+            } else {
+                renderPreview();
             }
         }
 
@@ -382,7 +513,6 @@
                 const el = document.createElement('div');
                 el.className = "bg-white border border-gray-200 rounded-lg p-3 shadow-sm relative group hover:border-blue-300 transition";
                 
-                // --- Step Header (Type & Actions) ---
                 let html = `
                     <div class="flex justify-between items-start mb-3">
                         <div class="flex items-center gap-2">
@@ -402,10 +532,8 @@
                     </div>
                 `;
 
-                // --- Step Fields (Dynamic) ---
                 html += `<div class="grid grid-cols-1 md:grid-cols-2 gap-3">`;
 
-                // 1. Prefix Text (Only for LinksTo/RedirectsTo)
                 if (step.type === 'LinksTo' || step.type === 'RedirectsTo') {
                     html += `
                         <div class="col-span-1 md:col-span-2">
@@ -415,7 +543,6 @@
                     `;
                 }
 
-                // 2. Main Text
                 html += `
                     <div class="col-span-1 ${step.type === 'StandaloneHyperlink' ? '' : 'md:col-span-2'}">
                         <label class="block text-xs font-semibold text-gray-500 mb-1">Text (Displayed Label)</label>
@@ -423,7 +550,6 @@
                     </div>
                 `;
 
-                // 3. URL
                 html += `
                     <div class="col-span-1 md:col-span-2">
                         <label class="block text-xs font-semibold text-gray-500 mb-1">Destination URL ${step.type !== 'StandaloneHyperlink' ? '(Optional)' : '(Required)'}</label>
@@ -431,7 +557,6 @@
                     </div>
                 `;
 
-                // 4. Archive URL (Always available)
                 html += `
                     <div class="col-span-1 md:col-span-2">
                         <label class="block text-xs font-semibold text-gray-500 mb-1">Archive URL (Wayback Machine)</label>
@@ -439,10 +564,95 @@
                     </div>
                 `;
 
-                html += `</div>`; // End grid
+                html += `</div>`; 
                 el.innerHTML = html;
                 container.appendChild(el);
             });
+        }
+
+        // --- Preview Logic ---
+        function renderPreview() {
+            if (!selectedPath) return;
+
+            const previewEl = document.getElementById('livePreview');
+            let md = "";
+
+            if (selectedPath.type === 'company') {
+                const company = db.companies[selectedPath.index];
+                md += `## ${company.name || "Company Name"}\n\n`;
+                md += "| Organization/Account | Verified Domain | Proof of Association |\n";
+                md += "|---|---|---|\n";
+                if (company.accounts) {
+                    company.accounts.forEach(acc => {
+                        md += generateRowMarkdown(acc) + "\n";
+                    });
+                }
+            } else {
+                const company = db.companies[selectedPath.cIndex];
+                const account = company.accounts[selectedPath.aIndex];
+                // Show header for context
+                md += "| Organization/Account | Verified Domain | Proof of Association |\n";
+                md += "|---|---|---|\n";
+                md += generateRowMarkdown(account);
+            }
+            
+            // Render Markdown to HTML using Marked.js
+            previewEl.innerHTML = marked.parse(md);
+        }
+
+        // Helper: Formatting logic ported from Readme_Generator.html
+        function formatLabel(text) {
+            if (!text) return "";
+            if (text.startsWith('`') && text.endsWith('`')) return text;
+            if (!text.includes(' ') && text.includes('.')) return `\`${text}\``;
+            return text;
+        }
+
+        function generateRowMarkdown(account) {
+            // 1. Column: Organization
+            const col1 = `**[${account.name}](${account.github_url})**`;
+
+            // 2. Column: Verified Domain
+            const col2 = account.verified_domain ? `\`${account.verified_domain}\`` : "";
+
+            // 3. Column: Proof
+            let col3 = "";
+            if (account.proof_steps && Array.isArray(account.proof_steps)) {
+                col3 = account.proof_steps.map((step, index) => {
+                    let line = "";
+                    
+                    if (index > 0) line += "<br>↳ ";
+
+                    const archivePart = step.archive_url ? `<sup> [[A]](${step.archive_url})</sup>` : "";
+
+                    if (step.type === "Base") {
+                        const label = formatLabel(step.text);
+                        line += step.url ? `[${label}](${step.url})` : label;
+                        line += archivePart;
+                    } 
+                    else if (step.type === "StandaloneHyperlink") {
+                        const label = formatLabel(step.text);
+                        line += `[${label}](${step.url})`;
+                        line += archivePart;
+                    }
+                    else if (step.type === "LinksTo" || step.type === "RedirectsTo") {
+                        const arrow = "🠊"; 
+                        const actionText = step.type === "LinksTo" ? "Links To" : "Redirects To";
+                        
+                        if (step.prefix_text) line += `${step.prefix_text} `;
+                        line += `${actionText} ${arrow} `;
+                        
+                        const label = formatLabel(step.text);
+                        line += step.url ? `[${label}](${step.url})` : label;
+                        line += archivePart;
+                    }
+                    return line;
+                }).join("");
+            }
+
+            // Align table cells
+            const cells = [col1, col2, col3].map(c => c ? ` ${c} ` : " ");
+            return `|${cells.join("|")}|`;
         }
 
         // --- Utility ---
