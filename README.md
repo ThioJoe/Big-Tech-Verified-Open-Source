@@ -4,6 +4,31 @@ This document lists open-source GitHub organizations and accounts that have been
 
 ---
 
+## Amazon
+
+| Organization/Account | Verified Domain | Proof of Association |
+|---|---|---|
+| **[awsdocs](https://github.com/awsdocs)** | | `docs.aws.amazon.com`<br>↳ [AWS SDK for C++ Documentation](https://docs.aws.amazon.com/sdk-for-cpp/latest/api/aws-cpp-sdk-s3-encryption/html/class_aws_1_1_s3_encryption_1_1_materials_1_1_k_m_s_with_context_encryption_materials.html)<br>↳ "Examples" link Links To 🠊 `github.com/awsdocs/aws-doc-sdk-examples` |
+| **[amazon-contributing](https://github.com/amazon-contributing)** | | `docs.aws.amazon.com`<br>↳ [CloudWatch Documentation](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-OTLPAdvancedsetup.html)<br>↳ Configuration snippets reference Links To 🠊 `github.com/amazon-contributing/opentelemetry-collector-contrib` |
+| **[amazon-connect](https://github.com/amazon-connect)** | | `aws.amazon.com`<br>↳ [AWS Contact Center Blog](https://aws.amazon.com/blogs/contact-center/analyze-customer-satisfaction-scores-with-post-contact-surveys-using-amazon-connect-tasks/)<br>↳ "subscribe today to..." Links To 🠊 `github.com/amazon-connect` |
+| **[amazon-braket](https://github.com/amazon-braket)** | | `docs.aws.amazon.com`<br>↳ [Amazon Braket Developer Guide](https://docs.aws.amazon.com/braket/latest/developerguide/braket-quera-submitting-analog-program-aquila.html)<br>↳ Code snippets reference Links To 🠊 `github.com/amazon-braket/amazon-braket-schemas-python` |
+| **[payfort](https://github.com/payfort)** | | `docs.payfort.com`<br>↳ [Prestashop Integration Guide (PDF)](https://docs.payfort.com/pdf/plugins/Prestashop%20Integration%20Guide.pdf)<br>↳ "Download the plugin" link Links To 🠊 `github.com/payfort/prestashop-payfort` |
+| **[amazon-gamelift](https://github.com/amazon-gamelift)** | | `docs.aws.amazon.com`<br>↳ [GameLift Developer Guide](https://docs.aws.amazon.com/gameliftservers/latest/developerguide/gamelift-wrapper-tutorial.html)<br>↳ Tutorial command Links To 🠊 `github.com/amazon-gamelift/amazon-gamelift-servers-game-server-wrapper` |
+| **[Amazon Ion](https://github.com/amazon-ion)** | | `aws.amazon.com`<br>↳ [AWS Big Data Blog](https://aws.amazon.com/blogs/big-data/analyze-amazon-ion-datasets-using-amazon-athena/)<br>↳ "Amazon Ion" link Links To 🠊 [`amzn.github.io/ion-docs/`](https://amzn.github.io/ion-docs/)<br>↳ Redirects To 🠊 [`amazon-ion.github.io`](https://amazon-ion.github.io/) |
+| **[Amazon](https://github.com/amzn)** | | `developer.amazon.com`<br>↳ [Amazon API Documentation](https://developer.amazon.com/docs/amazon-pay-api-v2/introduction.html#sdk)<br>↳ "SDK" Section Links To 🠊 [`github.com/amzn`](https://github.com/amzn/amazon-pay-api-sdk-php) |
+| **[AmazonAppDev](https://github.com/AmazonAppDev)** | | `developer.amazon.com`<br>↳ Footer "Follow Us" Section Links To 🠊 `github.com/AmazonAppDev` |
+| **[Amazon Science](https://github.com/amazon-science)** | `amazon.science` | `amazon.com`<br>↳ [`amazon.com/research`](https://www.amazon.com/research/)<br>↳ Redirects To 🠊 [`amazon.science`](https://www.amazon.science/) |
+| **[Amazon Linux](https://github.com/amazonlinux)** | `amazonlinux.com` | `docs.aws.amazon.com`<br>↳ [`docs.aws.amazon.com/datasync/latest/userguide/datasync-network.html`](https://docs.aws.amazon.com/datasync/latest/userguide/datasync-network.html)<br>↳ Sample Code Links To 🠊 `cdn.amazonlinux.com` |
+| **[Amazon Nova](https://github.com/amazon-nova-api)** | | `nova.amazon.com`<br>↳ [`nova.amazon.com/dev`](https://nova.amazon.com/dev)<br>↳ Quick Start Guides Links To 🠊 `github.com/amazon-nova-api` |
+| **[Amazon Web Services](https://github.com/aws)** | `amazon.com` | |
+| **[Amazon Archives](https://github.com/amazon-archives)** | `amazon.com` | |
+| **[Amazon Q Developer](https://github.com/Amazon-Q-Developer)** | `amazon.com` | |
+| **[amazon-freertos](https://github.com/amazon-freertos)** | `amazon.com` | |
+| **[Amazon Web Services - Labs](https://github.com/awslabs)** | `amazon.com` | |
+| **[AWS Samples](https://github.com/aws-samples/)** | `amazon.com` | |
+
+---
+
 ## Adobe
 
 | Organization/Account | Verified Domain | Proof of Association |

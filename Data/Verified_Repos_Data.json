@@ -1,6 +1,323 @@
 {
   "companies": [
     {
+      "name": "Amazon",
+      "accounts": [
+        {
+          "name": "awsdocs",
+          "github_url": "https://github.com/awsdocs",
+          "verified_domain": null,
+          "proof_steps": [
+            {
+              "type": "Base",
+              "text": "docs.aws.amazon.com",
+              "url": null
+            },
+            {
+              "type": "StandaloneHyperlink",
+              "text": "AWS SDK for C++ Documentation",
+              "url": "https://docs.aws.amazon.com/sdk-for-cpp/latest/api/aws-cpp-sdk-s3-encryption/html/class_aws_1_1_s3_encryption_1_1_materials_1_1_k_m_s_with_context_encryption_materials.html"
+            },
+            {
+              "type": "LinksTo",
+              "prefix_text": "\"Examples\" link",
+              "text": "github.com/awsdocs/aws-doc-sdk-examples",
+              "url": null
+            }
+          ]
+        },
+        {
+          "name": "amazon-contributing",
+          "github_url": "https://github.com/amazon-contributing",
+          "verified_domain": null,
+          "proof_steps": [
+            {
+              "type": "Base",
+              "text": "docs.aws.amazon.com",
+              "url": null
+            },
+            {
+              "type": "StandaloneHyperlink",
+              "text": "CloudWatch Documentation",
+              "url": "https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-OTLPAdvancedsetup.html"
+            },
+            {
+              "type": "LinksTo",
+              "prefix_text": "Configuration snippets reference",
+              "text": "github.com/amazon-contributing/opentelemetry-collector-contrib",
+              "url": null
+            }
+          ]
+        },
+        {
+          "name": "amazon-connect",
+          "github_url": "https://github.com/amazon-connect",
+          "verified_domain": null,
+          "proof_steps": [
+            {
+              "type": "Base",
+              "text": "aws.amazon.com",
+              "url": null
+            },
+            {
+              "type": "StandaloneHyperlink",
+              "text": "AWS Contact Center Blog",
+              "url": "https://aws.amazon.com/blogs/contact-center/analyze-customer-satisfaction-scores-with-post-contact-surveys-using-amazon-connect-tasks/"
+            },
+            {
+              "type": "LinksTo",
+              "prefix_text": "\"subscribe today to...\"",
+              "text": "github.com/amazon-connect",
+              "url": null
+            }
+          ]
+        },
+        {
+          "name": "amazon-braket",
+          "github_url": "https://github.com/amazon-braket",
+          "verified_domain": null,
+          "proof_steps": [
+            {
+              "type": "Base",
+              "text": "docs.aws.amazon.com",
+              "url": null
+            },
+            {
+              "type": "StandaloneHyperlink",
+              "text": "Amazon Braket Developer Guide",
+              "url": "https://docs.aws.amazon.com/braket/latest/developerguide/braket-quera-submitting-analog-program-aquila.html"
+            },
+            {
+              "type": "LinksTo",
+              "prefix_text": "Code snippets reference",
+              "text": "github.com/amazon-braket/amazon-braket-schemas-python",
+              "url": null
+            }
+          ]
+        },
+        {
+          "name": "payfort",
+          "github_url": "https://github.com/payfort",
+          "verified_domain": null,
+          "proof_steps": [
+            {
+              "type": "Base",
+              "text": "docs.payfort.com",
+              "url": null
+            },
+            {
+              "type": "StandaloneHyperlink",
+              "text": "Prestashop Integration Guide (PDF)",
+              "url": "https://docs.payfort.com/pdf/plugins/Prestashop%20Integration%20Guide.pdf"
+            },
+            {
+              "type": "LinksTo",
+              "prefix_text": "\"Download the plugin\" link",
+              "text": "github.com/payfort/prestashop-payfort",
+              "url": null
+            }
+          ]
+        },
+        {
+          "name": "amazon-gamelift",
+          "github_url": "https://github.com/amazon-gamelift",
+          "verified_domain": null,
+          "proof_steps": [
+            {
+              "type": "Base",
+              "text": "docs.aws.amazon.com",
+              "url": null
+            },
+            {
+              "type": "StandaloneHyperlink",
+              "text": "GameLift Developer Guide",
+              "url": "https://docs.aws.amazon.com/gameliftservers/latest/developerguide/gamelift-wrapper-tutorial.html"
+            },
+            {
+              "type": "LinksTo",
+              "prefix_text": "Tutorial command",
+              "text": "github.com/amazon-gamelift/amazon-gamelift-servers-game-server-wrapper",
+              "url": null
+            }
+          ]
+        },
+        {
+          "name": "Amazon Ion",
+          "github_url": "https://github.com/amazon-ion",
+          "verified_domain": null,
+          "proof_steps": [
+            {
+              "type": "Base",
+              "text": "aws.amazon.com",
+              "url": null
+            },
+            {
+              "type": "StandaloneHyperlink",
+              "text": "AWS Big Data Blog",
+              "url": "https://aws.amazon.com/blogs/big-data/analyze-amazon-ion-datasets-using-amazon-athena/"
+            },
+            {
+              "type": "LinksTo",
+              "prefix_text": "\"Amazon Ion\" link",
+              "text": "amzn.github.io/ion-docs/",
+              "url": "https://amzn.github.io/ion-docs/"
+            },
+            {
+              "type": "RedirectsTo",
+              "prefix_text": null,
+              "text": "amazon-ion.github.io",
+              "url": "https://amazon-ion.github.io/"
+            }
+          ]
+        },
+        {
+          "name": "Amazon",
+          "github_url": "https://github.com/amzn",
+          "verified_domain": null,
+          "proof_steps": [
+            {
+              "type": "Base",
+              "text": "developer.amazon.com",
+              "url": null
+            },
+            {
+              "type": "StandaloneHyperlink",
+              "text": "Amazon API Documentation",
+              "url": "https://developer.amazon.com/docs/amazon-pay-api-v2/introduction.html#sdk"
+            },
+            {
+              "type": "LinksTo",
+              "text": "github.com/amzn",
+              "url": "https://github.com/amzn/amazon-pay-api-sdk-php",
+              "prefix_text": "\"SDK\" Section"
+            }
+          ]
+        },
+        {
+          "name": "AmazonAppDev",
+          "github_url": "https://github.com/AmazonAppDev",
+          "verified_domain": null,
+          "proof_steps": [
+            {
+              "type": "Base",
+              "text": "developer.amazon.com",
+              "url": null
+            },
+            {
+              "type": "LinksTo",
+              "text": "github.com/AmazonAppDev",
+              "url": null,
+              "prefix_text": "Footer \"Follow Us\" Section"
+            }
+          ]
+        },
+        {
+          "name": "Amazon Science",
+          "github_url": "https://github.com/amazon-science",
+          "verified_domain": "amazon.science",
+          "proof_steps": [
+            {
+              "type": "Base",
+              "text": "amazon.com",
+              "url": null
+            },
+            {
+              "type": "StandaloneHyperlink",
+              "text": "amazon.com/research",
+              "url": "https://www.amazon.com/research/"
+            },
+            {
+              "type": "RedirectsTo",
+              "text": "amazon.science",
+              "url": "https://www.amazon.science/"
+            }
+          ]
+        },
+        {
+          "name": "Amazon Linux",
+          "github_url": "https://github.com/amazonlinux",
+          "verified_domain": "amazonlinux.com",
+          "proof_steps": [
+            {
+              "type": "Base",
+              "text": "docs.aws.amazon.com",
+              "url": null
+            },
+            {
+              "type": "StandaloneHyperlink",
+              "text": "docs.aws.amazon.com/datasync/latest/userguide/datasync-network.html",
+              "url": "https://docs.aws.amazon.com/datasync/latest/userguide/datasync-network.html"
+            },
+            {
+              "type": "LinksTo",
+              "text": "cdn.amazonlinux.com",
+              "url": null,
+              "prefix_text": "Sample Code"
+            }
+          ]
+        },
+        {
+          "name": "Amazon Nova",
+          "github_url": "https://github.com/amazon-nova-api",
+          "verified_domain": null,
+          "proof_steps": [
+            {
+              "type": "Base",
+              "text": "nova.amazon.com",
+              "url": null
+            },
+            {
+              "type": "StandaloneHyperlink",
+              "text": "nova.amazon.com/dev",
+              "url": "https://nova.amazon.com/dev"
+            },
+            {
+              "type": "LinksTo",
+              "text": "github.com/amazon-nova-api",
+              "url": null,
+              "prefix_text": "Quick Start Guides"
+            }
+          ]
+        },
+        {
+          "name": "Amazon Web Services",
+          "github_url": "https://github.com/aws",
+          "verified_domain": "amazon.com",
+          "proof_steps": []
+        },
+        {
+          "name": "Amazon Archives",
+          "github_url": "https://github.com/amazon-archives",
+          "verified_domain": "amazon.com",
+          "proof_steps": []
+        },
+        {
+          "name": "Amazon Q Developer",
+          "github_url": "https://github.com/Amazon-Q-Developer",
+          "verified_domain": "amazon.com",
+          "proof_steps": []
+        },
+        {
+          "name": "amazon-freertos",
+          "github_url": "https://github.com/amazon-freertos",
+          "verified_domain": "amazon.com",
+          "proof_steps": []
+        },
+        {
+          "name": "Amazon Web Services - Labs",
+          "github_url": "https://github.com/awslabs",
+          "verified_domain": "amazon.com",
+          "proof_steps": []
+        },
+        {
+          "name": "AWS Samples",
+          "github_url": "https://github.com/aws-samples/",
+          "verified_domain": "amazon.com",
+          "proof_steps": []
+        }
+      ]
+    },
+    {
       "name": "Adobe",
       "accounts": [
         {
@@ -508,7 +825,7 @@
               "text": "kaggle.com (Google-owned)",
               "url": "https://cloud.google.com/blog/products/gcp/welcome-kaggle-to-google-cloud/"
             },
-			{
+            {
               "type": "StandaloneHyperlink",
               "text": "API docs",
               "url": "https://www.kaggle.com/docs/models",
@@ -1038,7 +1355,7 @@
             }
           ]
         },
-		{
+        {
           "name": "FoundationDB",
           "github_url": "https://github.com/foundationdb",
           "verified_domain": null,
@@ -1062,7 +1379,7 @@
             }
           ]
         },
-		{
+        {
           "name": "ResearchKit",
           "github_url": "https://github.com/ResearchKit",
           "verified_domain": null,
@@ -1086,7 +1403,7 @@
             }
           ]
         },
-		{
+        {
           "name": "CareKit",
           "github_url": "https://github.com/carekit-apple",
           "verified_domain": null,

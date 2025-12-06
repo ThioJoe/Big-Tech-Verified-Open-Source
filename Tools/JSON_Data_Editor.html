@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verified Repos Data Manager</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        /* Custom scrollbar for a cleaner look */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #c1c1c1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #a8a8a8; }
+    </style>
+</head>
+<body class="bg-gray-100 h-screen flex flex-col overflow-hidden">
+
+    <header class="bg-gray-800 text-white p-4 flex justify-between items-center shadow-md z-10">
+        <div class="flex items-center gap-3">
+            <h1 class="font-bold text-xl"><i class="fa-solid fa-database mr-2"></i>Data Manager</h1>
+            <span class="text-xs bg-gray-700 px-2 py-1 rounded text-gray-300">Verified_Repos_Data.json</span>
+        </div>
+        <div class="flex gap-2">
+            <button onclick="document.getElementById('fileInput').click()" class="bg-gray-700 hover:bg-gray-600 px-4 py-2 rounded text-sm transition font-medium">
+                <i class="fa-solid fa-folder-open mr-2"></i>Load File
+            </button>
+            <input type="file" id="fileInput" class="hidden" accept=".json" onchange="handleFileUpload(this)">
+            <button onclick="copyOutput()" id="copyBtn" class="bg-green-600 hover:bg-green-700 px-4 py-2 rounded text-sm transition font-medium shadow-sm">
+                <i class="fa-solid fa-copy mr-2"></i>Copy JSON
+            </button>
+        </div>
+    </header>
+
+    <div class="flex-grow flex overflow-hidden">
+        
+        <div class="w-1/3 min-w-[300px] bg-white border-r border-gray-200 flex flex-col">
+            <div class="p-3 bg-gray-50 border-b border-gray-200 flex justify-between items-center">
+                <h2 class="font-bold text-gray-700 text-sm">Companies & Accounts</h2>
+                <button onclick="addCompany()" class="text-xs bg-blue-100 text-blue-700 hover:bg-blue-200 px-2 py-1 rounded transition">
+                    <i class="fa-solid fa-plus mr-1"></i>New Company
+                </button>
+            </div>
+            <div id="treeContainer" class="flex-grow overflow-y-auto p-2 space-y-1">
+                </div>
+        </div>
+
+        <div class="w-2/3 flex flex-col bg-gray-50">
+            <div id="emptyState" class="flex-grow flex flex-col items-center justify-center text-gray-400">
+                <i class="fa-regular fa-hand-point-left text-4xl mb-4"></i>
+                <p>Select an item on the left to edit</p>
+            </div>
+
+            <div id="editorContainer" class="hidden flex-col h-full overflow-hidden">
+                <div id="editorHeader" class="bg-white border-b border-gray-200 p-4 shadow-sm flex justify-between items-center">
+                    <h2 id="editorTitle" class="font-bold text-lg text-gray-800">Edit</h2>
+                    <button onclick="deleteCurrentItem()" class="text-red-500 hover:text-red-700 text-sm font-medium">
+                        <i class="fa-solid fa-trash-can mr-1"></i>Delete
+                    </button>
+                </div>
+                
+                <div id="formContent" class="flex-grow overflow-y-auto p-6 space-y-6">
+                    </div>
+            </div>
+        </div>
+    </div>
+
+    <textarea id="jsonOutput" class="hidden"></textarea>
+
+    <script>
+        // --- State Management ---
+        let db = { companies: [] };
+        let selectedPath = null; // { type: 'company', index: 0 } or { type: 'account', cIndex: 0, aIndex: 0 }
+
+        // --- Initialization ---
+        window.onload = function() {
+            renderTree();
+        };
+
+        // --- File Handling ---
+        function handleFileUpload(input) {
+            const file = input.files[0];
+            if (!file) return;
+            
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const json = JSON.parse(e.target.result);
+                    if (!json.companies || !Array.isArray(json.companies)) throw new Error("Invalid schema");
+                    db = json;
+                    selectedPath = null;
+                    renderTree();
+                    showEmptyState();
+                } catch (err) {
+                    alert("Error loading JSON: " + err.message);
+                }
+            };
+            reader.readAsText(file);
+            input.value = ''; // Reset
+        }
+
+        function copyOutput() {
+            const output = JSON.stringify(db, null, 2);
+            navigator.clipboard.writeText(output).then(() => {
+                const btn = document.getElementById('copyBtn');
+                const originalHtml = btn.innerHTML;
+                btn.innerHTML = '<i class="fa-solid fa-check mr-2"></i>Copied!';
+                btn.classList.replace('bg-green-600', 'bg-gray-700');
+                btn.classList.replace('hover:bg-green-700', 'hover:bg-gray-600');
+                setTimeout(() => {
+                    btn.innerHTML = originalHtml;
+                    btn.classList.replace('bg-gray-700', 'bg-green-600');
+                    btn.classList.replace('hover:bg-gray-600', 'hover:bg-green-700');
+                }, 2000);
+            });
+        }
+
+        // --- Rendering: Tree View ---
+        function renderTree() {
+            const container = document.getElementById('treeContainer');
+            container.innerHTML = '';
+
+            db.companies.forEach((company, cIndex) => {
+                // Company Item
+                const compDiv = document.createElement('div');
+                const isCompSelected = selectedPath && selectedPath.type === 'company' && selectedPath.index === cIndex;
+                
+                compDiv.className = `group`;
+                
+                // Company Header
+                const header = document.createElement('div');
+                header.className = `flex items-center p-2 rounded cursor-pointer transition ${isCompSelected ? 'bg-blue-100 text-blue-800 font-bold' : 'hover:bg-gray-100 text-gray-700'}`;
+                header.onclick = () => selectCompany(cIndex);
+                header.innerHTML = `
+                    <i class="fa-solid fa-building mr-2 text-gray-400 ${isCompSelected ? 'text-blue-500' : ''}"></i>
+                    <span class="truncate flex-grow">${escapeHtml(company.name || 'Unnamed Company')}</span>
+                    <button onclick="event.stopPropagation(); addAccount(${cIndex})" class="opacity-0 group-hover:opacity-100 text-xs bg-gray-200 hover:bg-gray-300 px-1.5 py-0.5 rounded text-gray-600" title="Add Account">
+                        <i class="fa-solid fa-plus"></i>
+                    </button>
+                `;
+                compDiv.appendChild(header);
+
+                // Accounts List
+                if (company.accounts && company.accounts.length > 0) {
+                    const accList = document.createElement('div');
+                    accList.className = "ml-6 border-l-2 border-gray-100 pl-1 mt-1 space-y-1";
+                    
+                    company.accounts.forEach((acc, aIndex) => {
+                        const accDiv = document.createElement('div');
+                        const isAccSelected = selectedPath && selectedPath.type === 'account' && selectedPath.cIndex === cIndex && selectedPath.aIndex === aIndex;
+                        
+                        accDiv.className = `flex items-center p-1.5 rounded cursor-pointer text-sm transition ${isAccSelected ? 'bg-blue-50 text-blue-700 font-medium' : 'text-gray-600 hover:bg-gray-100'}`;
+                        accDiv.onclick = (e) => { e.stopPropagation(); selectAccount(cIndex, aIndex); };
+                        accDiv.innerHTML = `
+                            <i class="fa-brands fa-github mr-2 ${isAccSelected ? 'text-blue-500' : 'text-gray-400'}"></i>
+                            <span class="truncate">${escapeHtml(acc.name || 'Unnamed Account')}</span>
+                        `;
+                        accList.appendChild(accDiv);
+                    });
+                    compDiv.appendChild(accList);
+                }
+
+                container.appendChild(compDiv);
+            });
+        }
+
+        // --- Selection Logic ---
+        function selectCompany(index) {
+            selectedPath = { type: 'company', index };
+            renderTree();
+            renderEditor();
+        }
+
+        function selectAccount(cIndex, aIndex) {
+            selectedPath = { type: 'account', cIndex, aIndex };
+            renderTree();
+            renderEditor();
+        }
+
+        function showEmptyState() {
+            document.getElementById('emptyState').classList.remove('hidden');
+            document.getElementById('editorContainer').classList.add('hidden');
+        }
+
+        // --- CRUD Logic ---
+        function addCompany() {
+            db.companies.push({ name: "New Company", accounts: [] });
+            selectCompany(db.companies.length - 1);
+        }
+
+        function addAccount(cIndex) {
+            if (!db.companies[cIndex].accounts) db.companies[cIndex].accounts = [];
+            db.companies[cIndex].accounts.push({
+                name: "New Account",
+                github_url: "https://github.com/",
+                verified_domain: null,
+                proof_steps: []
+            });
+            selectAccount(cIndex, db.companies[cIndex].accounts.length - 1);
+        }
+
+        function deleteCurrentItem() {
+            if (!selectedPath) return;
+            if (!confirm("Are you sure you want to delete this item?")) return;
+
+            if (selectedPath.type === 'company') {
+                db.companies.splice(selectedPath.index, 1);
+                selectedPath = null;
+            } else {
+                db.companies[selectedPath.cIndex].accounts.splice(selectedPath.aIndex, 1);
+                selectedPath = { type: 'company', index: selectedPath.cIndex };
+            }
+            renderTree();
+            if(selectedPath) renderEditor(); else showEmptyState();
+        }
+
+        // --- Rendering: Editor Forms ---
+        function renderEditor() {
+            if (!selectedPath) { showEmptyState(); return; }
+
+            document.getElementById('emptyState').classList.add('hidden');
+            const container = document.getElementById('editorContainer');
+            container.classList.remove('hidden');
+            container.classList.add('flex');
+            
+            const formContent = document.getElementById('formContent');
+            formContent.innerHTML = '';
+
+            if (selectedPath.type === 'company') {
+                renderCompanyForm(formContent);
+            } else {
+                renderAccountForm(formContent);
+            }
+        }
+
+        function renderCompanyForm(container) {
+            const company = db.companies[selectedPath.index];
+            document.getElementById('editorTitle').textContent = "Edit Company";
+
+            // Name Field
+            container.innerHTML = `
+                <div class="space-y-2">
+                    <label class="block text-sm font-bold text-gray-700">Company Name</label>
+                    <input type="text" value="${escapeHtml(company.name)}" oninput="updateCompany('name', this.value)" class="w-full p-2 border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 focus:outline-none">
+                </div>
+            `;
+        }
+
+        function renderAccountForm(container) {
+            const account = db.companies[selectedPath.cIndex].accounts[selectedPath.aIndex];
+            document.getElementById('editorTitle').textContent = `Edit Account: ${account.name}`;
+
+            // Basic Fields
+            let html = `
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="space-y-1">
+                        <label class="block text-xs font-bold uppercase text-gray-500">Display Name</label>
+                        <input type="text" value="${escapeHtml(account.name)}" oninput="updateAccount('name', this.value)" class="w-full p-2 border border-gray-300 rounded focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                    <div class="space-y-1">
+                        <label class="block text-xs font-bold uppercase text-gray-500">GitHub URL</label>
+                        <input type="text" value="${escapeHtml(account.github_url)}" oninput="updateAccount('github_url', this.value)" class="w-full p-2 border border-gray-300 rounded focus:ring-blue-500 focus:border-blue-500">
+                    </div>
+                </div>
+
+                <div class="space-y-1 pt-2">
+                    <label class="block text-xs font-bold uppercase text-gray-500">Verified Domain</label>
+                    <div class="flex gap-2">
+                        <input type="text" id="verifiedDomainInput" value="${escapeHtml(account.verified_domain || '')}" 
+                            ${account.verified_domain === null ? 'disabled' : ''}
+                            oninput="updateAccount('verified_domain', this.value)" 
+                            class="flex-grow p-2 border border-gray-300 rounded disabled:bg-gray-100 disabled:text-gray-400 focus:ring-blue-500 focus:border-blue-500" 
+                            placeholder="e.g. google.com">
+                        <div class="flex items-center">
+                            <label class="inline-flex items-center cursor-pointer">
+                                <input type="checkbox" class="form-checkbox h-5 w-5 text-blue-600" 
+                                    ${account.verified_domain !== null ? 'checked' : ''} 
+                                    onchange="toggleVerifiedDomain(this.checked)">
+                                <span class="ml-2 text-sm text-gray-700">Verified?</span>
+                            </label>
+                        </div>
+                    </div>
+                    <p class="text-xs text-gray-500">Uncheck if the account has no green "Verified" badge on GitHub.</p>
+                </div>
+
+                <hr class="border-gray-200">
+
+                <div class="space-y-3">
+                    <div class="flex justify-between items-center">
+                        <label class="block text-sm font-bold text-gray-800">Proof Steps</label>
+                        <button onclick="addStep()" class="text-xs bg-blue-600 hover:bg-blue-700 text-white px-3 py-1.5 rounded transition shadow-sm">
+                            <i class="fa-solid fa-plus mr-1"></i>Add Step
+                        </button>
+                    </div>
+                    <div id="stepsList" class="space-y-4">
+                        </div>
+                </div>
+            `;
+            container.innerHTML = html;
+            renderSteps(account.proof_steps);
+        }
+
+        // --- Data Updates ---
+        function updateCompany(field, value) {
+            db.companies[selectedPath.index][field] = value;
+            renderTree(); // Update sidebar name dynamically
+        }
+
+        function updateAccount(field, value) {
+            db.companies[selectedPath.cIndex].accounts[selectedPath.aIndex][field] = value;
+            if (field === 'name') renderTree();
+        }
+
+        function toggleVerifiedDomain(isChecked) {
+            const acc = db.companies[selectedPath.cIndex].accounts[selectedPath.aIndex];
+            if (isChecked) {
+                acc.verified_domain = "";
+                document.getElementById('verifiedDomainInput').disabled = false;
+                document.getElementById('verifiedDomainInput').focus();
+            } else {
+                acc.verified_domain = null;
+                document.getElementById('verifiedDomainInput').value = "";
+                document.getElementById('verifiedDomainInput').disabled = true;
+            }
+        }
+
+        // --- Steps Logic ---
+        function addStep() {
+            const steps = db.companies[selectedPath.cIndex].accounts[selectedPath.aIndex].proof_steps;
+            steps.push({ type: "Base", text: "", url: null });
+            renderEditor(); // Full re-render to show new step
+        }
+
+        function removeStep(index) {
+            const steps = db.companies[selectedPath.cIndex].accounts[selectedPath.aIndex].proof_steps;
+            steps.splice(index, 1);
+            renderEditor();
+        }
+
+        function moveStep(index, direction) {
+            const steps = db.companies[selectedPath.cIndex].accounts[selectedPath.aIndex].proof_steps;
+            if (index + direction < 0 || index + direction >= steps.length) return;
+            const temp = steps[index];
+            steps[index] = steps[index + direction];
+            steps[index + direction] = temp;
+            renderEditor();
+        }
+
+        function updateStep(stepIndex, field, value) {
+            const step = db.companies[selectedPath.cIndex].accounts[selectedPath.aIndex].proof_steps[stepIndex];
+            
+            // Handle nulls for optional URL fields
+            if ((field === 'url' || field === 'archive_url') && value.trim() === '') {
+                step[field] = null;
+            } else {
+                step[field] = value;
+            }
+
+            // Type change requires re-rendering this step to show/hide fields
+            if (field === 'type') {
+                // Reset irrelevant fields when type changes to keep data clean
+                if (value === 'Base' || value === 'StandaloneHyperlink') delete step.prefix_text;
+                // Ensure defaults
+                if (value === 'Base' || value === 'LinksTo' || value === 'RedirectsTo') {
+                    if(step.url === undefined) step.url = null;
+                }
+                renderEditor(); 
+            }
+        }
+
+        function renderSteps(steps) {
+            const container = document.getElementById('stepsList');
+            container.innerHTML = '';
+            
+            if (!steps || steps.length === 0) {
+                container.innerHTML = '<div class="text-center p-4 bg-gray-100 rounded text-gray-400 text-sm italic">No proof steps defined yet.</div>';
+                return;
+            }
+
+            steps.forEach((step, index) => {
+                const el = document.createElement('div');
+                el.className = "bg-white border border-gray-200 rounded-lg p-3 shadow-sm relative group hover:border-blue-300 transition";
+                
+                // --- Step Header (Type & Actions) ---
+                let html = `
+                    <div class="flex justify-between items-start mb-3">
+                        <div class="flex items-center gap-2">
+                            <span class="bg-gray-100 text-gray-600 text-xs font-bold px-2 py-1 rounded-full border border-gray-200">#${index + 1}</span>
+                            <select onchange="updateStep(${index}, 'type', this.value)" class="text-sm border-gray-300 rounded border p-1 font-semibold text-blue-700 bg-blue-50 focus:ring-blue-500 focus:outline-none">
+                                <option value="Base" ${step.type === 'Base' ? 'selected' : ''}>Base</option>
+                                <option value="StandaloneHyperlink" ${step.type === 'StandaloneHyperlink' ? 'selected' : ''}>StandaloneHyperlink</option>
+                                <option value="LinksTo" ${step.type === 'LinksTo' ? 'selected' : ''}>LinksTo (🠊)</option>
+                                <option value="RedirectsTo" ${step.type === 'RedirectsTo' ? 'selected' : ''}>RedirectsTo (🠊)</option>
+                            </select>
+                        </div>
+                        <div class="flex gap-1 opacity-50 group-hover:opacity-100 transition">
+                            <button onclick="moveStep(${index}, -1)" class="p-1 hover:bg-gray-100 rounded" title="Move Up"><i class="fa-solid fa-arrow-up text-gray-500"></i></button>
+                            <button onclick="moveStep(${index}, 1)" class="p-1 hover:bg-gray-100 rounded" title="Move Down"><i class="fa-solid fa-arrow-down text-gray-500"></i></button>
+                            <button onclick="removeStep(${index})" class="p-1 hover:bg-red-100 rounded text-red-500 ml-1" title="Delete Step"><i class="fa-solid fa-times"></i></button>
+                        </div>
+                    </div>
+                `;
+
+                // --- Step Fields (Dynamic) ---
+                html += `<div class="grid grid-cols-1 md:grid-cols-2 gap-3">`;
+
+                // 1. Prefix Text (Only for LinksTo/RedirectsTo)
+                if (step.type === 'LinksTo' || step.type === 'RedirectsTo') {
+                    html += `
+                        <div class="col-span-1 md:col-span-2">
+                            <label class="block text-xs font-semibold text-gray-500 mb-1">Prefix Text (Optional)</label>
+                            <input type="text" value="${escapeHtml(step.prefix_text || '')}" oninput="updateStep(${index}, 'prefix_text', this.value)" class="w-full text-sm p-1.5 border border-gray-300 rounded focus:border-blue-500" placeholder='e.g. "Follow Us" button'>
+                        </div>
+                    `;
+                }
+
+                // 2. Main Text
+                html += `
+                    <div class="col-span-1 ${step.type === 'StandaloneHyperlink' ? '' : 'md:col-span-2'}">
+                        <label class="block text-xs font-semibold text-gray-500 mb-1">Text (Displayed Label)</label>
+                        <input type="text" value="${escapeHtml(step.text || '')}" oninput="updateStep(${index}, 'text', this.value)" class="w-full text-sm p-1.5 border border-gray-300 rounded focus:border-blue-500" placeholder="e.g. google.com">
+                    </div>
+                `;
+
+                // 3. URL
+                html += `
+                    <div class="col-span-1 md:col-span-2">
+                        <label class="block text-xs font-semibold text-gray-500 mb-1">Destination URL ${step.type !== 'StandaloneHyperlink' ? '(Optional)' : '(Required)'}</label>
+                        <input type="text" value="${escapeHtml(step.url || '')}" oninput="updateStep(${index}, 'url', this.value)" class="w-full text-sm p-1.5 border border-gray-300 rounded focus:border-blue-500 text-blue-600 font-mono" placeholder="https://...">
+                    </div>
+                `;
+
+                // 4. Archive URL (Always available)
+                html += `
+                    <div class="col-span-1 md:col-span-2">
+                        <label class="block text-xs font-semibold text-gray-500 mb-1">Archive URL (Wayback Machine)</label>
+                        <input type="text" value="${escapeHtml(step.archive_url || '')}" oninput="updateStep(${index}, 'archive_url', this.value)" class="w-full text-sm p-1.5 border border-gray-300 rounded focus:border-blue-500 text-gray-600 font-mono" placeholder="https://web.archive.org/...">
+                    </div>
+                `;
+
+                html += `</div>`; // End grid
+                el.innerHTML = html;
+                container.appendChild(el);
+            });
+        }
+
+        // --- Utility ---
+        function escapeHtml(text) {
+            if (text === null || text === undefined) return "";
+            return text
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+
+    </script>
+</body>
+</html>
