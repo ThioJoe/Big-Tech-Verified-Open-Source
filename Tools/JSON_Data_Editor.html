@@ -109,10 +109,20 @@
         // --- State Management ---
         let db = { companies: [] };
         let selectedPath = null; // { type: 'company', index: 0 } or { type: 'account', cIndex: 0, aIndex: 0 }
+        let hasUnsavedChanges = false; // Track if user has made any modifications
 
         // --- Initialization ---
         window.onload = function() {
             renderTree();
+            
+            // Warn before navigating away if there are unsaved changes
+            window.addEventListener('beforeunload', function(e) {
+                if (hasUnsavedChanges) {
+                    e.preventDefault();
+                    e.returnValue = ''; // Required for Chrome
+                    return ''; // For legacy browsers
+                }
+            });
         };
 
         // --- File Handling ---
@@ -127,6 +137,7 @@
                     if (!json.companies || !Array.isArray(json.companies)) throw new Error("Invalid schema");
                     db = json;
                     selectedPath = null;
+                    hasUnsavedChanges = false; // Reset on file load
                     renderTree();
                     showEmptyState();
                 } catch (err) {
@@ -253,6 +264,7 @@
             const accounts = db.companies[srcCIndex].accounts;
             const [movedItem] = accounts.splice(srcAIndex, 1);
             accounts.splice(targetAIndex, 0, movedItem);
+            hasUnsavedChanges = true;
 
             // Update Selection if we moved the currently selected item
             if (selectedPath && selectedPath.type === 'account' && selectedPath.cIndex === srcCIndex) {
@@ -275,6 +287,7 @@
             const temp = db.companies[index];
             db.companies[index] = db.companies[index + direction];
             db.companies[index + direction] = temp;
+            hasUnsavedChanges = true;
 
             // Update Selection Tracking
             if (selectedPath) {
@@ -312,6 +325,7 @@
         // --- CRUD Logic ---
         function addCompany() {
             db.companies.push({ name: "New Company", accounts: [] });
+            hasUnsavedChanges = true;
             selectCompany(db.companies.length - 1);
         }
 
@@ -323,6 +337,7 @@
                 verified_domain: null,
                 proof_steps: []
             });
+            hasUnsavedChanges = true;
             selectAccount(cIndex, db.companies[cIndex].accounts.length - 1);
         }
 
@@ -337,6 +352,7 @@
                 db.companies[selectedPath.cIndex].accounts.splice(selectedPath.aIndex, 1);
                 selectedPath = { type: 'company', index: selectedPath.cIndex };
             }
+            hasUnsavedChanges = true;
             renderTree();
             if(selectedPath) renderEditor(); else showEmptyState();
         }
@@ -433,12 +449,14 @@
         // --- Data Updates ---
         function updateCompany(field, value) {
             db.companies[selectedPath.index][field] = value;
+            hasUnsavedChanges = true;
             renderTree();
             renderPreview();
         }
 
         function updateAccount(field, value) {
             db.companies[selectedPath.cIndex].accounts[selectedPath.aIndex][field] = value;
+            hasUnsavedChanges = true;
             if (field === 'name') renderTree();
             renderPreview();
         }
@@ -454,6 +472,7 @@
                 document.getElementById('verifiedDomainInput').value = "";
                 document.getElementById('verifiedDomainInput').disabled = true;
             }
+            hasUnsavedChanges = true;
             renderPreview();
             renderTree(); // Update tag in tree
         }
@@ -462,12 +481,14 @@
         function addStep() {
             const steps = db.companies[selectedPath.cIndex].accounts[selectedPath.aIndex].proof_steps;
             steps.push({ type: "Base", text: "", url: null });
+            hasUnsavedChanges = true;
             renderEditor(); 
         }
 
         function removeStep(index) {
             const steps = db.companies[selectedPath.cIndex].accounts[selectedPath.aIndex].proof_steps;
             steps.splice(index, 1);
+            hasUnsavedChanges = true;
             renderEditor();
         }
 
@@ -477,6 +498,7 @@
             const temp = steps[index];
             steps[index] = steps[index + direction];
             steps[index + direction] = temp;
+            hasUnsavedChanges = true;
             renderEditor();
         }
 
@@ -488,6 +510,7 @@
             } else {
                 step[field] = value;
             }
+            hasUnsavedChanges = true;
 
             if (field === 'type') {
                 if (value === 'Base' || value === 'StandaloneHyperlink') delete step.prefix_text;
