@@ -560,29 +560,29 @@
                 if (step.type === 'LinksTo' || step.type === 'RedirectsTo') {
                     html += `
                         <div class="col-span-1 md:col-span-2">
-                            <label class="block text-xs font-semibold text-gray-500 mb-1">Prefix Text (Optional)</label>
-                            <input type="text" value="${escapeHtml(step.prefix_text || '')}" oninput="updateStep(${index}, 'prefix_text', this.value)" class="w-full text-sm p-1.5 border border-gray-300 rounded focus:border-blue-500" placeholder='e.g. "Follow Us" button'>
+                            <label class="block text-xs font-semibold text-gray-500 mb-1">Prefix Text (Optional) 🠊</label>
+                            <input type="text" value="${escapeHtml(step.prefix_text || '')}" oninput="updateStep(${index}, 'prefix_text', this.value)" class="w-full text-sm p-1.5 border border-gray-300 rounded focus:border-blue-500">
                         </div>
                     `;
                 }
 
                 html += `
                     <div class="col-span-1 ${step.type === 'StandaloneHyperlink' ? '' : 'md:col-span-2'}">
-                        <label class="block text-xs font-semibold text-gray-500 mb-1">Text (Displayed Label)</label>
-                        <input type="text" value="${escapeHtml(step.text || '')}" oninput="updateStep(${index}, 'text', this.value)" class="w-full text-sm p-1.5 border border-gray-300 rounded focus:border-blue-500" placeholder="e.g. google.com">
+                        <label class="block text-xs font-semibold text-gray-500 mb-1">${step.type === 'LinksTo' ? '🠊 Destination Text' : 'Displayed Label'}</label>
+                        <input type="text" value="${escapeHtml(step.text || '')}" oninput="updateStep(${index}, 'text', this.value)" class="w-full text-sm p-1.5 border border-gray-300 rounded focus:border-blue-500">
                     </div>
                 `;
 
                 html += `
                     <div class="col-span-1 md:col-span-2">
-                        <label class="block text-xs font-semibold text-gray-500 mb-1">Destination URL ${step.type !== 'StandaloneHyperlink' ? '(Optional)' : '(Required)'}</label>
+                        <label class="block text-xs font-semibold text-gray-500 mb-1">${step.type === 'LinksTo' ? 'Destination Hyperlink URL' : 'Hyperlink URL'} ${step.type !== 'StandaloneHyperlink' ? '(Optional)' : '(Required)'}</label>
                         <input type="text" value="${escapeHtml(step.url || '')}" oninput="updateStep(${index}, 'url', this.value)" class="w-full text-sm p-1.5 border border-gray-300 rounded focus:border-blue-500 text-blue-600 font-mono" placeholder="https://...">
                     </div>
                 `;
 
                 html += `
                     <div class="col-span-1 md:col-span-2">
-                        <label class="block text-xs font-semibold text-gray-500 mb-1">Archive URL (Wayback Machine)</label>
+                        <label class="block text-xs font-semibold text-gray-500 mb-1">Archive URL</label>
                         <input type="text" value="${escapeHtml(step.archive_url || '')}" oninput="updateStep(${index}, 'archive_url', this.value)" class="w-full text-sm p-1.5 border border-gray-300 rounded focus:border-blue-500 text-gray-600 font-mono" placeholder="https://web.archive.org/...">
                     </div>
                 `;
