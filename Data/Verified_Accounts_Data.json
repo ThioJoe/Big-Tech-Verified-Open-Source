@@ -1428,6 +1428,329 @@
           ]
         }
       ]
+    },
+    {
+      "name": "Nvidia",
+      "accounts": [
+        {
+          "name": "NVIDIA Corporation",
+          "github_url": "https://github.com/NVIDIA",
+          "verified_domain": "nvidia.com",
+          "proof_steps": []
+        },
+        {
+          "name": "NVIDIA-NeMo",
+          "github_url": "https://github.com/NVIDIA-NeMo",
+          "verified_domain": "nvidia.com",
+          "proof_steps": []
+        },
+        {
+          "name": "NVIDIA-RTX",
+          "github_url": "https://github.com/NVIDIA-RTX",
+          "verified_domain": "nvidia.com",
+          "proof_steps": []
+        },
+        {
+          "name": "NVIDIA Research Projects",
+          "github_url": "https://github.com/NVlabs",
+          "verified_domain": null,
+          "proof_steps": [
+            {
+              "type": "Base",
+              "text": "developer.nvidia.com",
+              "url": null
+            },
+            {
+              "type": "StandaloneHyperlink",
+              "text": "developer.nvidia.com/sionna",
+              "url": "https://developer.nvidia.com/sionna"
+            },
+            {
+              "type": "LinksTo",
+              "text": "github.com/Nvlabs",
+              "url": null,
+              "prefix_text": "\"Get The Code\" Button"
+            }
+          ]
+        },
+        {
+          "name": " NVIDIA GameWorks",
+          "github_url": "https://github.com/NVIDIAGameWorks",
+          "verified_domain": null,
+          "proof_steps": [
+            {
+              "type": "Base",
+              "text": "nvidia.com",
+              "url": null
+            },
+            {
+              "type": "StandaloneHyperlink",
+              "text": "nvidia.com/en-us/research",
+              "url": "https://www.nvidia.com/en-us/research/"
+            },
+            {
+              "type": "Base",
+              "text": "Under \"**Reseach Code Libraries**\" click \"**View the Collection**\"",
+              "url": null
+            },
+            {
+              "type": "LinksTo",
+              "text": "github.com/NVIDIAGameWorks",
+              "url": null,
+              "prefix_text": "\"**Kaolin Wisp**\""
+            }
+          ]
+        },
+        {
+          "name": " NVIDIA AI IOT",
+          "github_url": "https://github.com/NVIDIA-AI-IOT",
+          "verified_domain": null,
+          "proof_steps": [
+            {
+              "type": "Base",
+              "text": "docs.nvidia.com",
+              "url": null
+            },
+            {
+              "type": "Base",
+              "text": "Python Samples Documentation",
+              "url": "https://docs.nvidia.com/metropolis/deepstream/dev-guide/text/DS_Python_Sample_Apps.html#:~:text=https%3A//github.com/NVIDIA%2DAI%2DIOT"
+            },
+            {
+              "type": "LinksTo",
+              "text": "github.com/NVIDIA-AI-IOT",
+              "url": null,
+              "prefix_text": "Git Clone Instructions"
+            }
+          ]
+        },
+        {
+          "name": " NVIDIA Omniverse",
+          "github_url": "https://github.com/NVIDIA-Omniverse",
+          "verified_domain": null,
+          "proof_steps": [
+            {
+              "type": "Base",
+              "text": "docs.omniverse.nvidia.com",
+              "url": null
+            },
+            {
+              "type": "StandaloneHyperlink",
+              "text": "Omniverse Kit Documentation",
+              "url": "https://docs.omniverse.nvidia.com/services/latest/developer/app_template.html#:~:text=https%3A//github.com/NVIDIA%2DOmniverse"
+            },
+            {
+              "type": "LinksTo",
+              "text": "github.com/NVIDIA-Omniverse",
+              "url": null
+            }
+          ]
+        },
+        {
+          "name": " NVIDIA AI Blueprints",
+          "github_url": "https://github.com/NVIDIA-AI-Blueprints",
+          "verified_domain": null,
+          "proof_steps": [
+            {
+              "type": "Base",
+              "text": "catalog.ngc.nvidia.com",
+              "url": null
+            },
+            {
+              "type": "StandaloneHyperlink",
+              "text": "NGC Container Catalog",
+              "url": "https://catalog.ngc.nvidia.com/orgs/nvidia/teams/blueprint/containers/ingestor-server?version=2.3.0#:~:text=Documentation%20and%20source,here"
+            },
+            {
+              "type": "LinksTo",
+              "text": "github.com/NVIDIA-AI-Blueprints",
+              "url": null
+            }
+          ]
+        },
+        {
+          "name": "NVIDIA Cosmos",
+          "github_url": "https://github.com/nvidia-cosmos",
+          "verified_domain": null,
+          "proof_steps": [
+            {
+              "type": "Base",
+              "text": "research.nvidia.com",
+              "url": null
+            },
+            {
+              "type": "StandaloneHyperlink",
+              "text": "Official Research Publication",
+              "url": "https://research.nvidia.com/publication/2025-03_cosmos-reason-1-physical-ai-common-sense-embodied-decisions#:~:text=https%3A//github.com/nvidia%2Dcosmos/cosmos%2Dreason1"
+            },
+            {
+              "type": "LinksTo",
+              "text": "github.com/nvidia-cosmos",
+              "url": null
+            }
+          ]
+        },
+        {
+          "name": "NVIDIA Digital Biology Research",
+          "github_url": "https://github.com/NVIDIA-Digital-Bio",
+          "verified_domain": null,
+          "proof_steps": [
+            {
+              "type": "Base",
+              "text": "catalog.ngc.nvidia.com",
+              "url": null
+            },
+            {
+              "type": "StandaloneHyperlink",
+              "text": "ReaSyn Model Weights",
+              "url": "https://catalog.ngc.nvidia.com/orgs/nvidia/teams/clara/resources/reasyn"
+            },
+            {
+              "type": "LinksTo",
+              "prefix_text": "",
+              "text": "github.com/NVIDIA-Digital-Bio",
+              "url": null
+            }
+          ]
+        },
+        {
+          "name": "NVIDIA Riva",
+          "github_url": "https://github.com/nvidia-riva",
+          "verified_domain": null,
+          "proof_steps": [
+            {
+              "type": "Base",
+              "text": "docs.nvidia.com",
+              "url": null
+            },
+            {
+              "type": "StandaloneHyperlink",
+              "text": "Audiocodes VoiceGateway Sample",
+              "url": "https://docs.nvidia.com/deeplearning/riva/archives/2-0-0/user-guide/docs/samples/ivr-integration.html#:~:text=websocket%20bridge%20%3C-,https%3A//github.com/nvidia%2Driva/websocket%2Dbridge,-%3E_"
+            },
+            {
+              "type": "LinksTo",
+              "prefix_text": "",
+              "text": "github.com/nvidia-riva",
+              "url": null
+            }
+          ]
+        },
+        {
+          "name": "NVIDIA Isaac for Healthcare",
+          "github_url": "https://github.com/isaac-for-healthcare",
+          "verified_domain": null,
+          "proof_steps": [
+            {
+              "type": "Base",
+              "text": "docs.nvidia.com",
+              "url": null
+            },
+            {
+              "type": "StandaloneHyperlink",
+              "text": "\"Setting Up Isaac for Healthcare\" Documentation",
+              "url": "https://docs.nvidia.com/learning/physical-ai/getting-started-with-isaac-for-healthcare/latest/training-healthcare-robots-from-scratch/01-setup/01-setup.html#:~:text=Please%20check%20the%20system%20prerequisites%20here"
+            },
+            {
+              "type": "LinksTo",
+              "prefix_text": "System Prerequisites",
+              "text": "github.com/isaac-for-healthcare",
+              "url": null
+            }
+          ]
+        },
+        {
+          "name": " NVIDIA Spatial Intelligence Lab (SIL)",
+          "github_url": "https://github.com/nv-tlabs",
+          "verified_domain": null,
+          "proof_steps": [
+            {
+              "type": "Base",
+              "text": "docs.nvidia.com",
+              "url": null
+            },
+            {
+              "type": "StandaloneHyperlink",
+              "text": "Omniverse NuRec Documentation",
+              "url": "https://docs.nvidia.com/nurec/robotics/neural_reconstruction_stereo.html#:~:text=git%20clone%20%2D%2Drecursive%20https%3A//github.com/nv%2Dtlabs/3dgrut.git"
+            },
+            {
+              "type": "LinksTo",
+              "prefix_text": "Git Clone Instructions",
+              "text": "github.com/nv-tlabs",
+              "url": null
+            }
+          ]
+        },
+        {
+          "name": "NVIDIA-Maxine",
+          "github_url": "https://github.com/NVIDIA-Maxine",
+          "verified_domain": null,
+          "proof_steps": [
+            {
+              "type": "Base",
+              "text": "build.nvidia.com",
+              "url": null
+            },
+            {
+              "type": "StandaloneHyperlink",
+              "text": "Maxine Studio Voice API Page",
+              "url": "https://build.nvidia.com/nvidia/studiovoice/api#:~:text=Download%20the%20Maxine%20Studio%20Voice%20Python%20client%20code%20by%20cloning%20the%20NVIDIA%20Maxine%20NIM%20Clients%20Repository"
+            },
+            {
+              "type": "LinksTo",
+              "prefix_text": "",
+              "text": "github.com/NVIDIA-Maxine",
+              "url": null
+            }
+          ]
+        },
+        {
+          "name": "NVIDIA-DOCA",
+          "github_url": "https://github.com/NVIDIA-DOCA",
+          "verified_domain": null,
+          "proof_steps": [
+            {
+              "type": "Base",
+              "text": "docs.nvidia.com",
+              "url": null
+            },
+            {
+              "type": "StandaloneHyperlink",
+              "text": "Nvidia DOCA Documentation",
+              "url": "https://docs.nvidia.com/doca/archive/3-1-0-core-update/changes-and-new-features/index.html#:~:text=DOCA%20Sample%20Code%3A%20Migrated%20all%20DOCA%20sample%20code%20snippets%20to%20GitHub%20for%20public%20access%3A%20https%3A//github.com/NVIDIA%2DDOCA/doca%2Dsamples"
+            },
+            {
+              "type": "LinksTo",
+              "prefix_text": "",
+              "text": "github.com/NVIDIA-DOCA",
+              "url": null
+            }
+          ]
+        },
+        {
+          "name": "NVIDIA Isaac",
+          "github_url": "https://github.com/nvidia-isaac",
+          "verified_domain": null,
+          "proof_steps": [
+            {
+              "type": "Base",
+              "text": "docs.nvidia.com",
+              "url": null
+            },
+            {
+              "type": "StandaloneHyperlink",
+              "text": "NVIDIA Omniverse NuRec Docs",
+              "url": "https://docs.nvidia.com/nurec/robotics/neural_reconstruction_stereo.html#:%7E:text=git%20clone%20%2D%2Drecursive%20https%3A//github.com/nv%2Dtlabs/3dgrut.git:~:text=KeyframesMetadataCollection%20protobuf%20format-,Example%20cuSFM%20data,-%3A"
+            },
+            {
+              "type": "LinksTo",
+              "text": "github.com/nvidia-isaac",
+              "url": null
+            }
+          ]
+        }
+      ]
     }
   ]
 }
