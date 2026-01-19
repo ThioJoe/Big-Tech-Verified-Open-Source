@@ -145,3 +145,11 @@ This document lists open-source GitHub organizations and accounts that have been
 | **[NVIDIA-Maxine](https://github.com/NVIDIA-Maxine)** | | `build.nvidia.com`<br>↳ [Maxine Studio Voice API Page](https://build.nvidia.com/nvidia/studiovoice/api#:~:text=Download%20the%20Maxine%20Studio%20Voice%20Python%20client%20code%20by%20cloning%20the%20NVIDIA%20Maxine%20NIM%20Clients%20Repository)<br>↳ Links To 🠊 `github.com/NVIDIA-Maxine` |
 | **[NVIDIA-DOCA](https://github.com/NVIDIA-DOCA)** | | `docs.nvidia.com`<br>↳ [Nvidia DOCA Documentation](https://docs.nvidia.com/doca/archive/3-1-0-core-update/changes-and-new-features/index.html#:~:text=DOCA%20Sample%20Code%3A%20Migrated%20all%20DOCA%20sample%20code%20snippets%20to%20GitHub%20for%20public%20access%3A%20https%3A//github.com/NVIDIA%2DDOCA/doca%2Dsamples)<br>↳ Links To 🠊 `github.com/NVIDIA-DOCA` |
 | **[NVIDIA Isaac](https://github.com/nvidia-isaac)** | | `docs.nvidia.com`<br>↳ [NVIDIA Omniverse NuRec Docs](https://docs.nvidia.com/nurec/robotics/neural_reconstruction_stereo.html#:%7E:text=git%20clone%20%2D%2Drecursive%20https%3A//github.com/nv%2Dtlabs/3dgrut.git:~:text=KeyframesMetadataCollection%20protobuf%20format-,Example%20cuSFM%20data,-%3A)<br>↳ Links To 🠊 `github.com/nvidia-isaac` |
+
+---
+
+## Comcast
+
+| Organization/Account | Verified Domain | Proof of Association |
+|---|---|---|
+| **[Comcast](https://github.com/Comcast)** | | `corporate.comcast.com`<br>↳ [Blog Post](https://corporate.comcast.com/stories/our-speed-test-is-now-available-open-source)<br>↳ Links To 🠊 `github.com/Comcast/`<sup> [[A]](https://web.archive.org/web/20250905144945/https://corporate.comcast.com/stories/our-speed-test-is-now-available-open-source)</sup> |

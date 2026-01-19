@@ -1751,6 +1751,34 @@
           ]
         }
       ]
+    },
+    {
+      "name": "Comcast",
+      "accounts": [
+        {
+          "name": "Comcast",
+          "github_url": "https://github.com/Comcast",
+          "verified_domain": null,
+          "proof_steps": [
+            {
+              "type": "Base",
+              "text": "corporate.comcast.com",
+              "url": null
+            },
+            {
+              "type": "StandaloneHyperlink",
+              "text": "Blog Post",
+              "url": "https://corporate.comcast.com/stories/our-speed-test-is-now-available-open-source"
+            },
+            {
+              "type": "LinksTo",
+              "text": "github.com/Comcast/",
+              "url": null,
+              "archive_url": "https://web.archive.org/web/20250905144945/https://corporate.comcast.com/stories/our-speed-test-is-now-available-open-source"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
