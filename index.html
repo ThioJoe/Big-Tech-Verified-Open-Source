@@ -149,6 +149,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
             gap: 16px;
+            align-items: start;
         }
 
         /* --- Card --- */
@@ -159,7 +160,6 @@
             display: flex; flex-direction: column;
             overflow: hidden;
             transition: border-color 0.2s;
-            height: 100%;
         }
         .card:hover { border-color: var(--border-highlight); }
 
