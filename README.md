@@ -1,6 +1,15 @@
+<div align="center">
+
 # Verified Open Source GitHub Accounts
 
-This document lists open-source GitHub organizations and accounts that have been verified as being affiliated with major tech companies.
+**This repository lists open-source GitHub organizations and accounts that have been verified as being affiliated with major tech companies, with proof.**
+
+<div align="center">
+  <h1><a href="https://thiojoe.github.io/Big-Tech-Verified-Open-Source/">🔗 Open the Interactive Viewer</a></h1>
+  <sub>https://thiojoe.github.io/Big-Tech-Verified-Open-Source//</sub>
+</div>
+
+</div>
 
 ---
 
