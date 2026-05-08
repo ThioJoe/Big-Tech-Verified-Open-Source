@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Big Tech Verified Open Source</title>
+    
+    <style>
+        /* --- Native CSS Variables (Dark Theme) --- */
+        :root {
+            --bg-main: #0d1117;
+            --bg-card: #161b22;
+            --bg-hover: #21262d;
+            --border-main: #30363d;
+            --border-highlight: #8b949e;
+            --text-main: #c9d1d9;
+            --text-muted: #8b949e;
+            --accent: #58a6ff;
+            --accent-hover: #3182ce;
+            --badge-bg: rgba(46, 160, 67, 0.15);
+            --badge-text: #3fb950;
+            --badge-border: rgba(46, 160, 67, 0.4);
+            
+            --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            --font-mono: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace;
+        }
+
+        /* --- Reset & Base --- */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            font-family: var(--font-sans);
+            -webkit-font-smoothing: antialiased;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            line-height: 1.5;
+        }
+
+        a { color: var(--accent); text-decoration: none; transition: color 0.2s; }
+        a:hover { color: var(--accent-hover); text-decoration: underline; text-decoration-color: rgba(88, 166, 255, 0.5); }
+        
+        .hidden { display: none !important; }
+
+        /* --- Scrollbar --- */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-main); }
+        ::-webkit-scrollbar-thumb { background: var(--border-main); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+
+        /* --- Layout --- */
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 16px; width: 100%; }
+        
+        header {
+            background-color: var(--bg-card);
+            border-bottom: 1px solid var(--border-main);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        
+        .header-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+            padding: 16px 0;
+        }
+
+        .header-title { display: flex; align-items: center; gap: 12px; }
+        .header-title h1 { font-size: 1.25rem; font-weight: 700; }
+        .header-title p { font-size: 0.75rem; color: var(--text-muted); }
+
+        .header-controls { display: flex; align-items: center; gap: 16px; flex-grow: 1; justify-content: flex-end; }
+
+        /* --- Search Input --- */
+        .search-container { position: relative; max-width: 300px; width: 100%; }
+        .search-container svg {
+            position: absolute; left: 10px; top: 50%; transform: translateY(-50%);
+            width: 16px; height: 16px; color: var(--text-muted);
+        }
+        .search-input {
+            width: 100%;
+            background-color: var(--bg-main);
+            border: 1px solid var(--border-main);
+            color: var(--text-main);
+            border-radius: 6px;
+            padding: 6px 12px 6px 34px;
+            font-size: 0.875rem;
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .search-input:focus { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+
+        .btn-outline {
+            display: inline-flex; align-items: center; gap: 6px;
+            background-color: var(--bg-hover);
+            border: 1px solid var(--border-main);
+            color: var(--text-main);
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: border-color 0.2s;
+            text-decoration: none;
+        }
+        .btn-outline:hover { border-color: var(--border-highlight); text-decoration: none; }
+
+        /* --- Main Content --- */
+        main { padding: 32px 0; flex-grow: 1; display: flex; flex-direction: column; gap: 32px; }
+
+        /* --- Drop Zone / States --- */
+        .state-container { display: flex; flex-direction: column; align-items: center; text-align: center; padding: 64px 16px; }
+        .state-container svg { width: 48px; height: 48px; margin-bottom: 16px; color: var(--border-main); }
+        .state-container h3 { font-size: 1.125rem; margin-bottom: 8px; }
+        .state-container p { font-size: 0.875rem; color: var(--text-muted); margin-bottom: 16px; }
+        
+        .spin { animation: spin 1s linear infinite; color: var(--accent) !important; }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+
+        .drop-zone {
+            border: 2px dashed var(--border-main);
+            background-color: var(--bg-card);
+            border-radius: 12px;
+            padding: 48px 24px;
+            cursor: pointer;
+            transition: background-color 0.2s, border-color 0.2s;
+            width: 100%; max-width: 600px; margin: 0 auto;
+        }
+        .drop-zone:hover, .drop-zone.drag-active { background-color: var(--bg-hover); border-color: var(--accent); }
+        
+        .alert { background-color: rgba(210, 153, 34, 0.15); border-left: 4px solid #d29922; color: #e3b341; padding: 16px; border-radius: 0 6px 6px 0; font-size: 0.875rem; margin-bottom: 24px; max-width: 600px; margin: 0 auto 24px auto; }
+
+        /* --- Company & Grid --- */
+        .company-section { margin-bottom: 40px; }
+        .company-header {
+            display: flex; align-items: center; gap: 12px;
+            border-bottom: 1px solid var(--border-main);
+            padding-bottom: 8px; margin-bottom: 16px;
+        }
+        .company-header svg { width: 24px; height: 24px; color: var(--text-muted); }
+        .company-header h2 { font-size: 1.5rem; font-weight: 700; }
+        .count-badge { background-color: var(--bg-hover); border: 1px solid var(--border-main); color: var(--text-muted); font-size: 0.75rem; padding: 2px 8px; border-radius: 12px; font-weight: 600; }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 16px;
+        }
+
+        /* --- Card --- */
+        .card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-main);
+            border-radius: 12px;
+            display: flex; flex-direction: column;
+            overflow: hidden;
+            transition: border-color 0.2s;
+            height: 100%;
+        }
+        .card:hover { border-color: var(--border-highlight); }
+
+        .card-header { padding: 16px; display: flex; gap: 12px; align-items: flex-start; flex-grow: 1; }
+        
+        .card-avatar {
+            width: 40px; height: 40px; border-radius: 8px;
+            border: 1px solid var(--border-main);
+            background-color: var(--bg-main);
+            object-fit: cover; flex-shrink: 0;
+        }
+
+        .card-title-group { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+        .card-title { font-weight: 700; font-size: 1rem; color: var(--text-main); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block; }
+        
+        .domain-badge {
+            display: inline-flex; align-items: center; gap: 4px;
+            background-color: var(--badge-bg); border: 1px solid var(--badge-border); color: var(--badge-text);
+            font-family: var(--font-mono); font-size: 0.65rem; font-weight: 600;
+            padding: 2px 6px; border-radius: 4px; width: max-content;
+        }
+        .domain-badge svg { width: 10px; height: 10px; }
+
+        /* --- Expandable Details (Chain of Custody) --- */
+        details { border-top: 1px solid var(--border-main); background-color: #11151d; }
+        
+        summary {
+            padding: 12px 16px; cursor: pointer; list-style: none;
+            display: flex; justify-content: space-between; align-items: center;
+            font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;
+            color: var(--text-muted); user-select: none; transition: color 0.2s;
+        }
+        summary::-webkit-details-marker { display: none; }
+        summary:hover { color: var(--text-main); }
+        
+        .summary-left { display: flex; align-items: center; gap: 8px; }
+        .summary-left svg { width: 14px; height: 14px; }
+        .chevron { width: 12px; height: 12px; transition: transform 0.2s; }
+        details[open] .chevron { transform: rotate(180deg); }
+
+        .details-content { padding: 0 16px 16px 16px; border-top: 1px solid rgba(48, 54, 61, 0.5); }
+
+        .verified-fallback {
+            padding: 12px 16px; border-top: 1px solid var(--border-main); background-color: #11151d;
+            font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;
+            color: var(--text-muted); display: flex; align-items: center; gap: 8px; user-select: none;
+        }
+        .verified-fallback svg { width: 14px; height: 14px; }
+
+        /* --- Timeline --- */
+        .timeline { margin-top: 16px; margin-bottom: 8px; border-left: 2px solid var(--border-main); margin-left: 10px; padding-bottom: 4px; display: flex; flex-direction: column; gap: 16px; }
+        
+        .timeline-item { position: relative; padding-left: 20px; }
+        .timeline-icon-bg {
+            position: absolute; left: -11px; top: -2px;
+            width: 20px; height: 20px;
+            background-color: #11151d; border: 2px solid var(--border-main);
+            border-radius: 50%; display: flex; justify-content: center; align-items: center;
+        }
+        .timeline-icon-bg svg { width: 8px; height: 8px; color: var(--text-muted); }
+
+        .timeline-content { display: flex; flex-direction: column; gap: 4px; }
+        
+        .timeline-label {
+            font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.05em; font-weight: 700; color: var(--text-muted);
+            display: flex; align-items: center; gap: 4px; flex-wrap: wrap;
+        }
+        .timeline-label .hl { color: var(--text-main); }
+        .timeline-label .dot { color: var(--border-main); }
+        .timeline-label .prefix { font-weight: 400; text-transform: capitalize; }
+
+        .timeline-value { font-size: 0.875rem; display: flex; align-items: center; flex-wrap: wrap; gap: 4px; word-break: break-all; }
+        .timeline-value span { font-weight: 500; }
+        
+        .archive-link {
+            display: inline-flex; align-items: center; gap: 4px;
+            font-size: 0.65rem; background-color: var(--bg-hover); border: 1px solid var(--border-main);
+            padding: 2px 6px; border-radius: 4px; color: var(--text-muted); margin-left: 8px; white-space: nowrap;
+        }
+        .archive-link svg { width: 10px; height: 10px; }
+        .archive-link:hover { color: var(--text-main); border-color: var(--text-muted); text-decoration: none; }
+
+        code.domain-code {
+            padding: 0.2em 0.4em; margin: 0; font-size: 85%;
+            background-color: rgba(110, 118, 129, 0.4); border-radius: 6px;
+            font-family: var(--font-mono);
+        }
+
+        /* --- Company Jump Nav --- */
+        .company-nav {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-main);
+            border-radius: 8px;
+            overflow: hidden;
+            margin-top: 8px;
+            margin-bottom: -16px;
+        }
+        .company-nav-summary {
+            padding: 10px 16px;
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            user-select: none;
+            transition: color 0.2s, background-color 0.2s;
+        }
+        .company-nav-summary::-webkit-details-marker { display: none; }
+        .company-nav-summary:hover { color: var(--text-main); background-color: var(--bg-hover); }
+        .company-nav details[open] .company-nav-summary { color: var(--text-main); }
+        .company-nav-list {
+            padding: 12px 16px;
+            border-top: 1px solid var(--border-main);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .company-nav-link {
+            display: inline-flex;
+            align-items: center;
+            background-color: var(--bg-hover);
+            border: 1px solid var(--border-main);
+            color: var(--text-muted);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            text-decoration: none;
+            transition: border-color 0.2s, color 0.2s;
+        }
+        .company-nav-link:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
+
+        /* --- Scroll offset for sticky header --- */
+        html { scroll-behavior: smooth; }
+        .company-section { scroll-margin-top: 80px; }
+
+        /* --- Footer --- */
+        footer { border-top: 1px solid var(--border-main); background-color: var(--bg-card); padding: 24px 0; margin-top: auto; text-align: center; }
+        footer p { font-size: 0.75rem; color: var(--text-muted); }
+        
+        @media (max-width: 640px) {
+            .header-controls { justify-content: flex-start; width: 100%; }
+            .search-container { max-width: 100%; }
+            .hide-mobile { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <div class="container header-content">
+            <div class="header-title">
+                <span id="icon-github-lg"></span>
+                <div>
+                    <h1>Verified Open Source</h1>
+                    <p>Documenting verified "Chain of Custody" links for Big Tech.</p>
+                </div>
+            </div>
+            
+            <div class="header-controls">
+                <div class="search-container">
+                    <span id="icon-search"></span>
+                    <input type="text" id="searchInput" class="search-input" placeholder="Search accounts or domains...">
+                </div>
+                <a href="https://github.com/thiojoe/big-tech-verified-open-source" target="_blank" class="btn-outline hide-mobile">
+                    <span id="icon-code-branch"></span> View Repo
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="container">
+        
+        <!-- Drop Zone Fallback -->
+        <div id="dropZoneContainer" class="hidden">
+            <div class="alert">
+                <strong>Unable to load data automatically.</strong> This usually happens if you are viewing this file locally without a web server.
+            </div>
+            <div id="dropZone" class="drop-zone state-container" onclick="document.getElementById('fileInput').click()">
+                <span id="icon-upload"></span>
+                <h3>Load Data Manually</h3>
+                <p>Drag and drop your <code class="domain-code">Verified_Accounts_Data.json</code> here, or click to browse.</p>
+                <input type="file" id="fileInput" class="hidden" accept=".json" onchange="handleManualFileUpload(event)">
+            </div>
+        </div>
+
+        <!-- Loading Spinner -->
+        <div id="loadingIndicator" class="state-container">
+            <span id="icon-spinner" class="spin"></span>
+            <p style="margin:0; font-weight:500;">Fetching verified data...</p>
+        </div>
+
+        <!-- Company Jump Navigation -->
+        <details id="companyNav" class="company-nav hidden" open>
+            <summary class="company-nav-summary">
+                <div class="summary-left">
+                    <span id="icon-nav-list"></span>&nbsp; Jump to Company
+                </div>
+                <div class="chevron" id="nav-chevron"></div>
+            </summary>
+            <div id="companyNavList" class="company-nav-list"></div>
+        </details>
+
+        <!-- Data Container -->
+        <div id="dataContainer" class="hidden"></div>
+
+        <!-- Empty State -->
+        <div id="emptyState" class="state-container hidden">
+            <span id="icon-ghost"></span>
+            <h3>No accounts found</h3>
+            <p style="margin:0;">Try adjusting your search criteria.</p>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>Data sourced from <a href="https://github.com/thiojoe/big-tech-verified-open-source">Big-Tech-Verified-Open-Source</a></p>
+            <p style="margin-top: 4px;">Self-contained interface generated for GitHub Pages.</p>
+        </div>
+    </footer>
+
+    <script>
+        // --- SVG Icons Library (Zero External Dependencies) ---
+        const SVG_ICONS = {
+            github: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>`,
+            search: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>`,
+            codeBranch: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="6" y1="3" x2="6" y2="15"></line><circle cx="18" cy="6" r="3"></circle><circle cx="6" cy="18" r="3"></circle><path d="M18 9a9 9 0 0 1-9 9"></path></svg>`,
+            upload: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>`,
+            spinner: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="2" x2="12" y2="6"></line><line x1="12" y1="18" x2="12" y2="22"></line><line x1="4.93" y1="4.93" x2="7.76" y2="7.76"></line><line x1="16.24" y1="16.24" x2="19.07" y2="19.07"></line><line x1="2" y1="12" x2="6" y2="12"></line><line x1="18" y1="12" x2="22" y2="12"></line><line x1="4.93" y1="19.07" x2="7.76" y2="16.24"></line><line x1="16.24" y1="7.76" x2="19.07" y2="4.93"></line></svg>`,
+            ghost: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 10h.01"></path><path d="M15 10h.01"></path><path d="M12 2a8 8 0 0 0-8 8v12l3-3 2.5 2.5L12 19l2.5 2.5L17 19l3 3V10a8 8 0 0 0-8-8z"></path></svg>`,
+            building: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect><path d="M9 22v-4h6v4"></path><path d="M8 6h.01"></path><path d="M16 6h.01"></path><path d="M12 6h.01"></path><path d="M12 10h.01"></path><path d="M12 14h.01"></path><path d="M16 10h.01"></path><path d="M16 14h.01"></path><path d="M8 10h.01"></path><path d="M8 14h.01"></path></svg>`,
+            checkCircle: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>`,
+            diagram: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="16" y="3" width="6" height="6" rx="1"></rect><rect x="2" y="9" width="6" height="6" rx="1"></rect><rect x="16" y="15" width="6" height="6" rx="1"></rect><path d="M8 12h4v-6h4"></path><path d="M12 12v6h4"></path></svg>`,
+            chevronDown: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>`,
+            flag: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><line x1="4" y1="22" x2="4" y2="15"></line></svg>`,
+            external: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>`,
+            link: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>`,
+            share: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line></svg>`,
+            circle: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" stroke="none"><circle cx="12" cy="12" r="8"></circle></svg>`,
+            archive: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="21 8 21 21 3 21 3 8"></polyline><rect x="1" y="3" width="22" height="5"></rect><line x1="10" y1="12" x2="14" y2="12"></line></svg>`,
+            list: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>`
+        };
+
+        function getIcon(name) { return SVG_ICONS[name] || ''; }
+
+        // Inject initial static icons
+        document.getElementById('icon-github-lg').innerHTML = `<div style="width: 32px; height: 32px; color: var(--text-main);">${getIcon('github')}</div>`;
+        document.getElementById('icon-search').innerHTML = getIcon('search');
+        document.getElementById('icon-code-branch').innerHTML = `<div style="width: 14px; height: 14px;">${getIcon('codeBranch')}</div>`;
+        document.getElementById('icon-upload').innerHTML = getIcon('upload');
+        document.getElementById('icon-spinner').innerHTML = `<div style="width: 48px; height: 48px;">${getIcon('spinner')}</div>`;
+        document.getElementById('icon-ghost').innerHTML = getIcon('ghost');
+        document.getElementById('icon-nav-list').innerHTML = `<span style="width:14px;height:14px;display:inline-flex;">${getIcon('list')}</span>`;
+        document.getElementById('nav-chevron').innerHTML = getIcon('chevronDown');
+
+        // --- Settings & State ---
+        const DEFAULT_SETTINGS = {
+            DATA_URL: './Data/Verified_Accounts_Data.json',
+            FALLBACK_URL: 'https://raw.githubusercontent.com/thiojoe/big-tech-verified-open-source/main/Data/Verified_Accounts_Data.json'
+        };
+        let globalData = [];
+
+        // --- Initialization ---
+        window.addEventListener('DOMContentLoaded', () => {
+            setupEventListeners();
+            loadData();
+        });
+
+        function setupEventListeners() {
+            document.getElementById('searchInput').addEventListener('input', (e) => {
+                renderData(globalData, e.target.value);
+            });
+
+            const dropZone = document.getElementById('dropZone');
+            ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+                dropZone.addEventListener(eventName, preventDefaults, false);
+            });
+
+            function preventDefaults(e) { e.preventDefault(); e.stopPropagation(); }
+
+            ['dragenter', 'dragover'].forEach(eventName => {
+                dropZone.addEventListener(eventName, () => dropZone.classList.add('drag-active'), false);
+            });
+
+            ['dragleave', 'drop'].forEach(eventName => {
+                dropZone.addEventListener(eventName, () => dropZone.classList.remove('drag-active'), false);
+            });
+
+            dropZone.addEventListener('drop', (e) => {
+                const files = e.dataTransfer.files;
+                if (files && files.length > 0) processFile(files[0]);
+            }, false);
+        }
+
+        // --- Data Fetching ---
+        async function loadData() {
+            try {
+                let response = await fetch(DEFAULT_SETTINGS.DATA_URL);
+                if (!response.ok) throw new Error('Primary URL failed');
+                handleDataSuccess(await response.json());
+            } catch (error) {
+                console.warn("Could not load from local path, trying fallback URL...", error);
+                try {
+                    let response = await fetch(DEFAULT_SETTINGS.FALLBACK_URL);
+                    if (!response.ok) throw new Error('Fallback URL failed');
+                    handleDataSuccess(await response.json());
+                } catch (fallbackError) {
+                    console.error("All fetch attempts failed. Show upload.", fallbackError);
+                    showManualUpload();
+                }
+            }
+        }
+
+        function handleManualFileUpload(event) {
+            const file = event.target.files[0];
+            if (file) processFile(file);
+        }
+
+        function processFile(file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const data = JSON.parse(e.target.result);
+                    if (!data.companies) throw new Error("Missing 'companies' array.");
+                    handleDataSuccess(data);
+                } catch (err) {
+                    alert("Error parsing JSON: " + err.message);
+                }
+            };
+            reader.readAsText(file);
+        }
+
+        function handleDataSuccess(data) {
+            globalData = data.companies;
+            document.getElementById('loadingIndicator').classList.add('hidden');
+            document.getElementById('dropZoneContainer').classList.add('hidden');
+            renderData(globalData, '');
+        }
+
+        function showManualUpload() {
+            document.getElementById('loadingIndicator').classList.add('hidden');
+            document.getElementById('dropZoneContainer').classList.remove('hidden');
+        }
+
+        // --- Rendering Helpers ---
+        function escapeHtml(text) {
+            if (text == null) return "";
+            const div = document.createElement('div'); div.textContent = text; return div.innerHTML;
+        }
+
+        function formatLabel(text) {
+            if (!text) return "";
+            let cleanText = escapeHtml(text);
+            if (cleanText.startsWith('`') && cleanText.endsWith('`')) return `<code class="domain-code">${cleanText.slice(1, -1)}</code>`;
+            if (!cleanText.includes(' ') && cleanText.includes('.')) return `<code class="domain-code">${cleanText}</code>`;
+            return cleanText;
+        }
+
+        function getGithubUsername(url) {
+            if (!url) return '';
+            try {
+                const cleanUrl = url.endsWith('/') ? url.slice(0, -1) : url;
+                return cleanUrl.split('/').pop();
+            } catch (e) { return ''; }
+        }
+
+        function renderProofSteps(steps) {
+            if (!steps || steps.length === 0) return ``;
+
+            let html = `<div class="timeline">`;
+
+            steps.forEach((step) => {
+                let icon = 'circle';
+                let labelHTML = '';
+
+                if (step.type === 'Base') { icon = 'flag'; labelHTML = `<span class="hl">Origin</span>`; } 
+                else if (step.type === 'StandaloneHyperlink') { icon = 'external'; labelHTML = `<span class="hl">Reference</span>`; } 
+                else if (step.type === 'LinksTo') {
+                    icon = 'link'; labelHTML = `<span class="hl">Links To</span>`;
+                    if (step.prefix_text) labelHTML += `<span class="dot">•</span><span class="prefix">${formatLabel(step.prefix_text)}</span>`;
+                } 
+                else if (step.type === 'RedirectsTo') {
+                    icon = 'share'; labelHTML = `<span class="hl">Redirects To</span>`;
+                    if (step.prefix_text) labelHTML += `<span class="dot">•</span><span class="prefix">${formatLabel(step.prefix_text)}</span>`;
+                }
+
+                let content = formatLabel(step.text);
+                let linkHTML = step.url 
+                    ? `<a href="${escapeHtml(step.url)}" target="_blank">${content}</a>`
+                    : `<span>${content}</span>`;
+
+                let archiveHTML = step.archive_url
+                    ? `<a href="${escapeHtml(step.archive_url)}" target="_blank" title="View Archive on Wayback Machine" class="archive-link">${getIcon('archive')} Archive</a>`
+                    : '';
+
+                html += `
+                <div class="timeline-item">
+                    <div class="timeline-icon-bg">${getIcon(icon)}</div>
+                    <div class="timeline-content">
+                        <div class="timeline-label">${labelHTML}</div>
+                        <div class="timeline-value">${linkHTML} ${archiveHTML}</div>
+                    </div>
+                </div>`;
+            });
+
+            html += `</div>`;
+            return html;
+        }
+
+        // --- Main Render Logic ---
+        function renderData(companies, filterText = '') {
+            const container = document.getElementById('dataContainer');
+            const emptyState = document.getElementById('emptyState');
+            const companyNav = document.getElementById('companyNav');
+            const companyNavList = document.getElementById('companyNavList');
+            
+            container.innerHTML = '';
+            companyNavList.innerHTML = '';
+            filterText = filterText.toLowerCase().trim();
+            let hasVisibleAccounts = false;
+
+            companies.forEach(company => {
+                const filteredAccounts = company.accounts.filter(acc => {
+                    if (!filterText) return true;
+                    return (company.name || "").toLowerCase().includes(filterText) || 
+                           (acc.name || "").toLowerCase().includes(filterText) || 
+                           (acc.verified_domain || "").toLowerCase().includes(filterText);
+                });
+
+                if (filteredAccounts.length === 0) return;
+                hasVisibleAccounts = true;
+
+                const companyId = 'company-' + (company.name || '').toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+
+                const navLink = document.createElement('a');
+                navLink.href = '#' + companyId;
+                navLink.className = 'company-nav-link';
+                navLink.textContent = company.name;
+                companyNavList.appendChild(navLink);
+
+                const section = document.createElement('div');
+                section.className = "company-section";
+                section.id = companyId;
+                
+                section.innerHTML = `
+                    <div class="company-header">
+                        ${getIcon('building')}
+                        <h2>${escapeHtml(company.name)}</h2>
+                        <span class="count-badge">${filteredAccounts.length}</span>
+                    </div>
+                `;
+
+                const grid = document.createElement('div');
+                grid.className = "card-grid";
+
+                filteredAccounts.forEach(acc => {
+                    const card = document.createElement('div');
+                    card.className = "card";
+
+                    const username = getGithubUsername(acc.github_url);
+                    const header = document.createElement('div');
+                    header.className = "card-header";
+                    
+                    let badgeHTML = '';
+                    if (acc.verified_domain) {
+                        badgeHTML = `
+                            <span class="domain-badge">
+                                ${getIcon('checkCircle')} ${escapeHtml(acc.verified_domain)}
+                            </span>
+                        `;
+                    }
+
+                    header.innerHTML = `
+                        <img src="https://github.com/${username}.png?size=48" alt="${escapeHtml(acc.name)}" class="card-avatar" onerror="this.src='https://github.com/ghost.png?size=48'">
+                        <div class="card-title-group">
+                            <a href="${escapeHtml(acc.github_url)}" target="_blank" class="card-title" title="${escapeHtml(acc.name)}">${escapeHtml(acc.name)}</a>
+                            ${badgeHTML}
+                        </div>
+                    `;
+                    card.appendChild(header);
+
+                    const hasSteps = acc.proof_steps && acc.proof_steps.length > 0;
+                    
+                    if (hasSteps) {
+                        const details = document.createElement('details');
+                        details.innerHTML = `
+                            <summary>
+                                <div class="summary-left">
+                                    ${getIcon('diagram')} Verification Chain <span style="font-weight:400; opacity:0.75; text-transform:none;">(${acc.proof_steps.length} steps)</span>
+                                </div>
+                                <div class="chevron">${getIcon('chevronDown')}</div>
+                            </summary>
+                            <div class="details-content">
+                                ${renderProofSteps(acc.proof_steps)}
+                            </div>
+                        `;
+                        card.appendChild(details);
+                    } else if (acc.verified_domain) {
+                        const footer = document.createElement('div');
+                        footer.className = "verified-fallback";
+                        footer.innerHTML = `${getIcon('github')} Verified via GitHub Domain`;
+                        card.appendChild(footer);
+                    }
+
+                    grid.appendChild(card);
+                });
+
+                section.appendChild(grid);
+                container.appendChild(section);
+            });
+
+            if (hasVisibleAccounts) {
+                container.classList.remove('hidden');
+                emptyState.classList.add('hidden');
+                if (!filterText) {
+                    companyNav.classList.remove('hidden');
+                } else {
+                    companyNav.classList.add('hidden');
+                }
+            } else {
+                container.classList.add('hidden');
+                emptyState.classList.remove('hidden');
+                companyNav.classList.add('hidden');
+            }
+        }
+    </script>
+</body>
+</html>
